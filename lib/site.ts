@@ -5,6 +5,10 @@ export const siteConfig = {
   secondaryPhone: "085889792571",
   mapsUrl: "https://maps.app.goo.gl/Em9rP5zreHBsWsmA6",
   reviewUrl: "https://maps.app.goo.gl/Em9rP5zreHBsWsmA6",
+  instagramUrl:
+    "https://www.instagram.com/bengkellas_al_ihsan?igsh=aDkyZmxwNG8xcWNj",
+  tiktokUrl:
+    "https://www.tiktok.com/@bengkellasalihsan?_r=1&_t=ZS-95c4FykBysr",
   mapsEmbedUrl:
     "https://www.google.com/maps?q=Bengkel%20Las%20Al%20Ihsan%20Bekasi%2C%20Jl.%20Bengkong%20Raya%2C%20RT.001%2FRW.006%2C%20Padurenan%2C%20Kec.%20Mustika%20Jaya%2C%20Kota%20Bekasi%2C%20Jawa%20Barat%2017156&output=embed",
   address:
@@ -26,10 +30,40 @@ export const siteConfig = {
     "https://wa.me/6281389424370?text=Halo%20Bengkel%20Las%20Al-Ihsan%20Bekasi%2C%20saya%20ingin%20konsultasi%20mengenai%20pengerjaan%20las.",
   whatsappSecondaryUrl:
     "https://wa.me/6285889792571?text=Halo%20Bengkel%20Las%20Al-Ihsan%20Bekasi%2C%20saya%20ingin%20bertanya%20mengenai%20layanan%20las.",
+  socialLinks: [
+    {
+      label: "WhatsApp",
+      icon: "whatsapp",
+      url: "https://wa.me/6281389424370?text=Halo%20Bengkel%20Las%20Al-Ihsan%20Bekasi%2C%20saya%20ingin%20konsultasi%20mengenai%20pengerjaan%20las.",
+      theme:
+        "border-emerald-300/35 bg-emerald-500 text-white hover:bg-emerald-600",
+    },
+    {
+      label: "Instagram",
+      icon: "instagram",
+      url: "https://www.instagram.com/bengkellas_al_ihsan?igsh=aDkyZmxwNG8xcWNj",
+      theme:
+        "border-[#f1c1d8] bg-[#fdf0f6] text-[#d62976] hover:bg-[#fbe4ef]",
+    },
+    {
+      label: "TikTok",
+      icon: "tiktok",
+      url: "https://www.tiktok.com/@bengkellasalihsan?_r=1&_t=ZS-95c4FykBysr",
+      theme:
+        "border-[#cfdcf5] bg-[#eef3fb] text-[#243d6b] hover:bg-[#e0e9f8]",
+    },
+    {
+      label: "Google Maps",
+      icon: "maps",
+      url: "https://maps.app.goo.gl/Em9rP5zreHBsWsmA6",
+      theme:
+        "border-[#cfdcf5] bg-white text-[#243d6b] hover:bg-[#f4f7fc]",
+    },
+  ],
   stats: [
     { value: "2", label: "nomor WhatsApp aktif" },
     { value: "8", label: "layanan utama" },
-    { value: "4", label: "area layanan prioritas" },
+    { value: "4", label: "jalur kontak & sosial" },
   ],
   advantages: [
     {
@@ -69,6 +103,11 @@ export const trustSignals = [
     description: "Lokasi bisnis dapat dibuka langsung dari Google Maps.",
   },
   {
+    title: "Instagram & TikTok aktif",
+    description:
+      "Calon pelanggan juga bisa melihat branding dan aktivitas sosial usaha dari akun resmi.",
+  },
+  {
     title: "Portofolio asli",
     description: "Foto yang tampil berasal dari dokumentasi proyek bengkel.",
   },
@@ -94,6 +133,11 @@ export const valueProps = [
     title: "Mendukung trust & SEO lokal",
     description:
       "Nama bisnis, nomor kontak, area layanan, dan lokasi dibuat konsisten untuk Google Maps dan pencarian lokal.",
+  },
+  {
+    title: "Sosial media resmi terpasang",
+    description:
+      "Instagram dan TikTok resmi ikut ditampilkan agar branding terlihat aktif dan mudah diverifikasi.",
   },
 ];
 

@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { BrandLogo } from "@/components/brand-logo";
 import { ButtonLink } from "@/components/button-link";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { PortfolioCard } from "@/components/portfolio-card";
@@ -8,6 +9,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SocialLinks } from "@/components/social-links";
 import {
   additionalServices,
   areas,
@@ -32,9 +34,9 @@ export default function Home() {
         >
           <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-24">
             <div className="flex flex-col justify-center">
-              <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/6 px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-brand-amber/90">
-                Bengkel Las Bekasi
-              </p>
+              <div className="mb-6">
+                <BrandLogo className="max-w-fit" />
+              </div>
               <h1 className="max-w-4xl font-display text-5xl leading-none tracking-tight text-white sm:text-6xl lg:text-7xl">
                 Bengkel Las Al-Ihsan Bekasi untuk pagar, kanopi, stainless, dan
                 pengerjaan custom yang rapi.
@@ -67,7 +69,10 @@ export default function Home() {
                   Cek Lokasi di Maps
                 </ButtonLink>
               </div>
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              <div className="mt-5">
+                <SocialLinks />
+              </div>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {trustSignals.map((signal) => (
                   <div
                     key={signal.title}
@@ -98,9 +103,9 @@ export default function Home() {
             </div>
             <div className="relative">
               <div className="absolute -left-6 top-8 hidden h-36 w-36 rounded-full bg-brand-amber/25 blur-3xl lg:block" />
-              <div className="absolute -right-10 bottom-12 hidden h-40 w-40 rounded-full bg-brand-steel/40 blur-3xl lg:block" />
+              <div className="absolute -right-10 bottom-12 hidden h-40 w-40 rounded-full bg-white/18 blur-3xl lg:block" />
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900 shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
-                <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(250,204,21,0.18),rgba(255,255,255,0)_38%,rgba(15,23,42,0.5))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(239,57,69,0.22),rgba(255,255,255,0)_38%,rgba(36,61,107,0.6))]" />
                 <div className="relative aspect-[4/5] w-full sm:aspect-[5/4] lg:aspect-[4/5]">
                   <Image
                     src="/images/hero-kanopi-modern.jpg"
@@ -135,12 +140,12 @@ export default function Home() {
               </div>
               <div className="mt-4 ml-auto max-w-sm rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.28em] text-brand-amber">
-                  Bengkel Las Terdekat Bekasi
+                  Brand Identity
                 </p>
                 <p className="mt-3 text-sm leading-7 text-zinc-300">
-                  Cocok untuk kebutuhan rumah tinggal, pagar minimalis, kanopi
-                  carport, tangga putar, hingga perbaikan las panggilan yang
-                  butuh respon cepat.
+                  Logo, warna, dan jalur sosial resmi sekarang diselaraskan
+                  dengan identitas Bengkel Las Al-Ihsan: putih, biru, merah,
+                  dengan ikon WhatsApp, Instagram, TikTok, dan Maps yang jelas.
                 </p>
               </div>
             </div>
@@ -148,7 +153,7 @@ export default function Home() {
         </section>
 
         <section className="border-b border-white/10 bg-white/[0.02]">
-          <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:px-8">
             {valueProps.map((item) => (
               <div
                 key={item.title}
@@ -233,6 +238,9 @@ export default function Home() {
                   <ButtonLink href={siteConfig.whatsappSecondaryUrl} variant="ghost">
                     Chat Nomor Cadangan
                   </ButtonLink>
+                </div>
+                <div className="mt-6">
+                  <SocialLinks />
                 </div>
               </aside>
             </div>
@@ -449,6 +457,12 @@ export default function Home() {
                       </span>
                     </a>
                   ))}
+                </div>
+                <div className="mt-6">
+                  <p className="text-xs uppercase tracking-[0.24em] text-brand-amber">
+                    Sosial Resmi
+                  </p>
+                  <SocialLinks className="mt-3" />
                 </div>
                 <div className="mt-8 flex flex-col gap-3">
                   <ButtonLink href={siteConfig.mapsUrl}>Buka Google Maps</ButtonLink>

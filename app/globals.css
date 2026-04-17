@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #070707;
-  --foreground: #f6f3ed;
+  --background: #20365f;
+  --foreground: #f8fbff;
   --color-ink: #0f172a;
-  --color-brand-amber: #facc15;
-  --color-brand-amber-deep: #eab308;
-  --color-brand-steel: #94a3b8;
+  --color-brand-amber: #ef3945;
+  --color-brand-amber-deep: #d92d39;
+  --color-brand-steel: #dfe9fb;
 }
 
 @theme inline {
@@ -27,8 +27,9 @@ html {
 body {
   font-family: var(--font-alihsan-body), sans-serif;
   background:
-    radial-gradient(circle at top, rgba(250, 204, 21, 0.14), transparent 24%),
-    linear-gradient(180deg, #090909 0%, #050505 52%, #080808 100%);
+    radial-gradient(circle at top left, rgba(239, 57, 69, 0.18), transparent 26%),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 20%),
+    linear-gradient(180deg, #243d6b 0%, #1d3257 52%, #20365f 100%);
 }
 
 body::before {
@@ -45,8 +46,8 @@ body::before {
 }
 
 ::selection {
-  background: rgba(250, 204, 21, 0.8);
-  color: #111111;
+  background: rgba(239, 57, 69, 0.88);
+  color: #ffffff;
 }
 
 a {

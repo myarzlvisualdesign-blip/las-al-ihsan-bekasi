@@ -11,7 +11,11 @@ export function LocalBusinessSchema() {
         image: `${siteConfig.siteUrl}/images/hero-kanopi-modern.jpg`,
         url: siteConfig.siteUrl,
         telephone: siteConfig.primaryPhone,
-        sameAs: [siteConfig.mapsUrl],
+        sameAs: [
+          siteConfig.mapsUrl,
+          siteConfig.instagramUrl,
+          siteConfig.tiktokUrl,
+        ],
         areaServed: siteConfig.areaServed.map((name) => ({
           "@type": "City",
           name,

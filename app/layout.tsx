@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         url: "/images/hero-kanopi-modern.jpg",
         width: 1600,
         height: 1200,
-        alt: "Kanopi modern Bengkel Las Al-Ihsan Bekasi",
+        alt: "Logo dan kanopi modern Bengkel Las Al-Ihsan Bekasi",
       },
     ],
   },
