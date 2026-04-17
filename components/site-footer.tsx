@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 import { BrandLogo } from "@/components/brand-logo";
 import { SocialLinks } from "@/components/social-links";
-import { siteConfig } from "@/lib/site";
+import { navigationLinks, siteConfig } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-[#d6e0f0] bg-[#f3f7fd]">
+    <footer className="border-t border-[#d6e0f0] bg-[#f4f7fe]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[1.15fr_0.95fr_0.9fr] lg:px-8">
         <div>
           <BrandLogo compact />
@@ -16,22 +18,22 @@ export function SiteFooter() {
           <SocialLinks className="mt-5" iconOnly />
         </div>
         <div>
-          <p className="text-sm uppercase tracking-[0.24em] text-[#ef3945]">
+          <p className="text-sm uppercase tracking-[0.24em] text-[#e11d3f]">
             Navigasi
           </p>
-          <div className="mt-4 grid gap-2 text-sm text-[#243d6b]">
-            <a href="#services">Layanan</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#areas">Area Layanan</a>
-            <a href="#faq">FAQ</a>
-            <a href="#maps">Google Maps</a>
+          <div className="mt-4 grid gap-2 text-sm text-[#17336c]">
+            {navigationLinks.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
         <div>
-          <p className="text-sm uppercase tracking-[0.24em] text-[#ef3945]">
+          <p className="text-sm uppercase tracking-[0.24em] text-[#e11d3f]">
             Kontak
           </p>
-          <div className="mt-4 grid gap-2 text-sm text-[#243d6b]">
+          <div className="mt-4 grid gap-2 text-sm text-[#17336c]">
             <a href={siteConfig.whatsappPrimaryUrl}>{siteConfig.primaryPhone}</a>
             <a href={siteConfig.whatsappSecondaryUrl}>
               {siteConfig.secondaryPhone}

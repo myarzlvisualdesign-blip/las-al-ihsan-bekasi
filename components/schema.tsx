@@ -1,4 +1,4 @@
-import { faqs, siteConfig } from "@/lib/site";
+import { faqs, reviewSnapshot, siteConfig } from "@/lib/site";
 
 export function LocalBusinessSchema() {
   const schema = {
@@ -16,6 +16,12 @@ export function LocalBusinessSchema() {
           siteConfig.instagramUrl,
           siteConfig.tiktokUrl,
         ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: reviewSnapshot.rating,
+          reviewCount: reviewSnapshot.reviewCount,
+          bestRating: "5",
+        },
         areaServed: siteConfig.areaServed.map((name) => ({
           "@type": "City",
           name,

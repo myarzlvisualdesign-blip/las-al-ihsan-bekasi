@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type ButtonLinkProps = {
   href: string;
   children: React.ReactNode;
@@ -14,15 +16,25 @@ export function ButtonLink({
 
   const variants = {
     primary:
-      "bg-brand-amber text-white hover:bg-brand-amber-deep shadow-[0_14px_34px_rgba(239,57,69,0.24)]",
+      "bg-brand-amber text-white hover:bg-brand-amber-deep shadow-[0_14px_34px_rgba(225,29,63,0.28)]",
     secondary:
-      "border border-[#b7c8e8] bg-white/92 text-[#243d6b] hover:border-[#243d6b] hover:bg-[#f2f6fd]",
+      "border border-[#b7c8e8] bg-white/92 text-[#17336c] hover:border-[#17336c] hover:bg-[#f2f6fd]",
     ghost:
-      "border border-[#cfdbf2] bg-[#edf2fb] text-[#243d6b] hover:bg-[#e3ebf8]",
+      "border border-[#cfdbf2] bg-[#edf2fb] text-[#17336c] hover:bg-[#e3ebf8]",
   };
 
+  const className = `${base} ${variants[variant]}`;
+
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={className}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <a href={href} className={`${base} ${variants[variant]}`}>
+    <a href={href} className={className}>
       {children}
     </a>
   );

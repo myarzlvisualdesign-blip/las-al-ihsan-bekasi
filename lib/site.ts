@@ -36,66 +36,41 @@ export const siteConfig = {
       icon: "whatsapp",
       url: "https://wa.me/6281389424370?text=Halo%20Bengkel%20Las%20Al-Ihsan%20Bekasi%2C%20saya%20ingin%20konsultasi%20mengenai%20pengerjaan%20las.",
       theme:
-        "border-emerald-300/35 bg-emerald-500 text-white hover:bg-emerald-600",
+        "border-[#0d5c4d] bg-[#0f9d58] text-white hover:bg-[#0d8a4d]",
     },
     {
       label: "Instagram",
       icon: "instagram",
       url: "https://www.instagram.com/bengkellas_al_ihsan?igsh=aDkyZmxwNG8xcWNj",
       theme:
-        "border-[#f1c1d8] bg-[#fdf0f6] text-[#d62976] hover:bg-[#fbe4ef]",
+        "border-[#f4bdd5] bg-white text-[#e1306c] hover:bg-[#fff1f7]",
     },
     {
       label: "TikTok",
       icon: "tiktok",
       url: "https://www.tiktok.com/@bengkellasalihsan?_r=1&_t=ZS-95c4FykBysr",
       theme:
-        "border-[#cfdcf5] bg-[#eef3fb] text-[#243d6b] hover:bg-[#e0e9f8]",
+        "border-[#cad7f0] bg-[#f4f8ff] text-[#17336c] hover:bg-[#e8f0fd]",
     },
     {
       label: "Google Maps",
       icon: "maps",
       url: "https://maps.app.goo.gl/Em9rP5zreHBsWsmA6",
       theme:
-        "border-[#cfdcf5] bg-white text-[#243d6b] hover:bg-[#f4f7fc]",
-    },
-  ],
-  stats: [
-    { value: "2", label: "nomor WhatsApp aktif" },
-    { value: "10", label: "kategori pekerjaan utama" },
-    { value: "4", label: "area layanan inti" },
-  ],
-  advantages: [
-    {
-      tag: "01",
-      title: "Logo, Maps, dan identitas usaha jelas",
-      description:
-        "Brand, titik lokasi, nomor WhatsApp, Instagram, dan TikTok dibuat konsisten supaya calon pelanggan lebih yakin sebelum memesan.",
-    },
-    {
-      tag: "02",
-      title: "Kategori pekerjaan lengkap",
-      description:
-        "Mulai dari pagar, teralis, stainless steel, tangga putar, folding gate, pintu besi, rolling door, kanopi, sampai konstruksi ringan.",
-    },
-    {
-      tag: "03",
-      title: "Terima perbaikan dan pengecatan",
-      description:
-        "Bukan hanya pembuatan baru. Tim juga menerima pengelasan ulang, penguatan, perbaikan komponen besi, dan pengecatan finishing.",
-    },
-    {
-      tag: "04",
-      title: "Layanan panggilan ke lokasi",
-      description:
-        "Cocok untuk pelanggan di Bekasi yang butuh survey, cek ukuran, diskusi model, atau pemeriksaan awal langsung di tempat.",
+        "border-[#cad7f0] bg-white text-[#17336c] hover:bg-[#f5f8ff]",
     },
   ],
   heroTags: [
     "Bengkel Las Bekasi",
     "Jasa Las Panggilan",
+    "Google 4.9 / 261 Review",
     "Perbaikan & Pengecatan",
-    "Maps, IG, TikTok Aktif",
+  ],
+  stats: [
+    { value: "4.9", label: "rating Google" },
+    { value: "261", label: "review Google" },
+    { value: "4", label: "area layanan inti" },
+    { value: "2", label: "nomor WhatsApp aktif" },
   ],
   serviceChecklist: [
     "Pagar",
@@ -109,54 +84,119 @@ export const siteConfig = {
   ],
 } as const;
 
+export const navigationLinks = [
+  { href: "/", label: "Beranda" },
+  { href: "/layanan", label: "Layanan" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/tentang", label: "Tentang" },
+  { href: "/ulasan", label: "Ulasan" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/lokasi", label: "Lokasi" },
+] as const;
+
+export const reviewSnapshot = {
+  rating: "4.9",
+  reviewCount: "261",
+  source: "Google Maps",
+  summary:
+    "Snapshot profil Google Maps yang Anda berikan menunjukkan rating 4.9 dengan 261 review. Kami menampilkan angka ini apa adanya dan mengarahkan pengunjung untuk memeriksa ulasan langsung di Google Maps.",
+  badgeAlt:
+    "Rating Google Maps Bengkel Las Al-Ihsan Bekasi 4.9 dari 261 review",
+} as const;
+
 export const trustSignals = [
   {
-    title: "Profil usaha mudah dicek",
+    title: "Identitas bisnis mudah diverifikasi",
     description:
-      "Nama usaha, nomor kontak, lokasi, dan sosial resmi tampil konsisten untuk membangun kepercayaan.",
+      "Nama usaha, WhatsApp, Google Maps, Instagram, dan TikTok ditampilkan konsisten untuk memudahkan calon pelanggan memeriksa bisnis sebelum pesan.",
   },
   {
-    title: "Foto proyek asli bengkel",
+    title: "Portfolio memakai dokumentasi asli",
     description:
-      "Gambar yang dipakai berasal dari dokumentasi pekerjaan nyata, bukan stok template.",
+      "Foto yang tampil berasal dari pekerjaan lapangan Bengkel Las Al-Ihsan Bekasi, bukan stok template atau mockup generik.",
   },
   {
-    title: "WhatsApp langsung aktif",
+    title: "CTA diarahkan ke jalur closing tercepat",
     description:
-      "Calon pelanggan bisa langsung kirim foto lokasi, ukuran kasar, dan kebutuhan awal tanpa ribet.",
+      "Setiap halaman diarahkan ke WhatsApp agar calon pelanggan bisa langsung kirim foto lokasi, ukuran kasar, dan kebutuhan awal.",
   },
   {
-    title: "Maps & sosial resmi terhubung",
+    title: "Fokus lokal Bekasi dan sekitarnya",
     description:
-      "Google Maps, Instagram, dan TikTok ditaruh jelas untuk membantu verifikasi sebelum deal.",
+      "Konten dibuat untuk SEO lokal Bekasi, Tambun, Cikarang, dan Babelan agar relevan untuk pencarian jasa las terdekat.",
   },
 ];
 
 export const valueProps = [
   {
-    title: "Pagar sampai rolling door",
-    description:
-      "Kategori layanan dibuat lengkap supaya pelanggan langsung tahu scope pekerjaan yang bisa dikerjakan.",
-  },
-  {
-    title: "Bisa custom sesuai lokasi",
-    description:
-      "Desain dapat disesuaikan dengan lebar bukaan, fasad rumah, kebutuhan keamanan, dan style bangunan.",
-  },
-  {
-    title: "Cocok untuk order baru atau perbaikan",
-    description:
-      "Halaman ini tidak hanya menjual pembuatan baru, tetapi juga perbaikan, cat ulang, dan penguatan struktur.",
-  },
-  {
-    title: "Dibuat untuk SEO lokal Bekasi",
-    description:
-      "Keyword, heading, internal link, schema, Maps, dan area layanan disusun untuk pencarian lokal yang relevan.",
-  },
-  {
     title: "Tampilan lebih serius untuk closing",
     description:
-      "Struktur copy menekankan trust, scope pekerjaan, kontak cepat, dan bukti visual agar siap dipresentasikan ke client.",
+      "Landing page dibuat seperti company profile ringkas: jelas, meyakinkan, dan siap dipakai saat calon pelanggan membandingkan vendor.",
+  },
+  {
+    title: "Scope pekerjaan langsung terbaca",
+    description:
+      "Kategori layanan dipisahkan rapi agar pengunjung cepat paham apakah kebutuhan mereka masuk ke pagar, kanopi, stainless, atau perbaikan.",
+  },
+  {
+    title: "Real review snapshot, bukan quote palsu",
+    description:
+      "Bagian ulasan menonjolkan data rating Google yang bisa diperiksa langsung, tanpa menampilkan testimonial buatan.",
+  },
+  {
+    title: "Setiap topik punya halaman sendiri",
+    description:
+      "Layanan, portfolio, tentang, ulasan, FAQ, dan lokasi dibuat sebagai page terpisah untuk pengalaman mobile dan SEO yang lebih matang.",
+  },
+  {
+    title: "Branding merah-biru lebih tegas",
+    description:
+      "Palet visual dipertegas agar merek terasa lebih kokoh, mudah dikenali, dan konsisten dengan karakter logo welder Al-Ihsan.",
+  },
+];
+
+export const advantages = [
+  {
+    tag: "01",
+    title: "Respon cepat untuk konsultasi awal",
+    description:
+      "Pelanggan bisa langsung kirim foto area, ukuran kasar, dan referensi model ke WhatsApp tanpa perlu proses yang berbelit.",
+  },
+  {
+    tag: "02",
+    title: "Kategori pekerjaan lebih matang",
+    description:
+      "Layanan dipisah menjadi kategori yang jelas agar kebutuhan rumah, ruko, maupun proyek kecil menengah langsung terarah.",
+  },
+  {
+    tag: "03",
+    title: "Ada jalur trust sebelum deal",
+    description:
+      "Google Maps, rating, alamat, nomor aktif, dan sosial media resmi tampil jelas supaya pelanggan lebih yakin sebelum booking.",
+  },
+  {
+    tag: "04",
+    title: "Cocok untuk pembuatan baru maupun perbaikan",
+    description:
+      "Tidak hanya order baru. Bengkel juga menerima pengelasan ulang, penguatan struktur, pengecatan, dan layanan panggilan.",
+  },
+];
+
+export const processSteps = [
+  {
+    title: "Kirim kebutuhan via WhatsApp",
+    description:
+      "Ceritakan kebutuhan Anda, kirim foto area, dan jelaskan ukuran kasar atau referensi model yang diinginkan.",
+  },
+  {
+    title: "Survey atau arahkan solusi",
+    description:
+      "Untuk kebutuhan tertentu, tim bisa membantu survey lokasi atau memberi arahan awal agar pekerjaan lebih presisi.",
+  },
+  {
+    title: "Produksi dan pemasangan",
+    description:
+      "Setelah kebutuhan jelas, pengerjaan dilakukan sesuai kategori layanan dengan fokus pada hasil rapi dan kokoh.",
   },
 ];
 
@@ -173,25 +213,25 @@ export const serviceCategories: ServiceCategory[] = [
     badge: "Kategori 01",
     title: "Pagar Besi & Gerbang Rumah",
     description:
-      "Pembuatan pagar besi Bekasi untuk rumah tinggal, ruko, dan area depan bangunan dengan model minimalis, custom, atau dekoratif.",
+      "Pembuatan pagar besi Bekasi untuk rumah, ruko, dan area depan bangunan dengan model minimalis, custom, atau dekoratif.",
     bullets: [
-      "Pagar swing dan sliding sesuai lebar akses",
-      "Finishing hitam, putih, atau kombinasi motif",
-      "Cocok untuk fasad rumah dan carport",
+      "Pagar swing dan sliding sesuai kebutuhan akses",
+      "Bisa menyesuaikan fasad rumah modern atau klasik",
+      "Finishing warna dan detail dapat dikonsultasikan",
     ],
-    note: "Salah satu permintaan paling sering untuk kebutuhan keamanan dan tampilan depan rumah.",
+    note: "Pilihan tepat untuk keamanan rumah sekaligus memperkuat tampilan depan properti.",
   },
   {
     badge: "Kategori 02",
     title: "Teralis Jendela & Pengaman",
     description:
-      "Teralis untuk jendela, bukaan samping, pintu belakang, dan area servis dengan desain yang tetap rapi dilihat dari luar.",
+      "Teralis untuk jendela, bukaan samping, pintu belakang, dan area servis dengan desain rapi dan tetap proporsional.",
     bullets: [
-      "Model vertikal, silang, dan custom pattern",
-      "Bisa menyesuaikan bukaan existing",
-      "Membantu keamanan tanpa membuat fasad terasa berat",
+      "Model vertikal, horizontal, silang, atau custom motif",
+      "Dapat menyesuaikan bukaan existing",
+      "Cocok untuk kebutuhan keamanan tambahan di rumah",
     ],
-    note: "Umumnya dipesan bersamaan dengan pagar atau pintu besi.",
+    note: "Sering dipesan bersamaan dengan pagar besi atau pintu pengaman.",
   },
   {
     badge: "Kategori 03",
@@ -200,10 +240,10 @@ export const serviceCategories: ServiceCategory[] = [
       "Layanan stainless Bekasi untuk railing tangga, balkon, kombinasi kaca, dan detail interior yang membutuhkan tampilan bersih.",
     bullets: [
       "Railing stainless untuk tangga dan balkon",
-      "Finishing modern untuk area indoor maupun semi outdoor",
-      "Bisa dipadukan dengan kaca atau material lain",
+      "Bisa dipadukan dengan kaca atau ornamen lain",
+      "Tampilan modern untuk indoor dan semi outdoor",
     ],
-    note: "Cocok untuk rumah modern yang ingin hasil lebih bersih dan presisi.",
+    note: "Cocok untuk rumah yang ingin hasil lebih presisi dan tampak premium.",
   },
   {
     badge: "Kategori 04",
@@ -211,35 +251,35 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Pengerjaan tangga putar, tangga siku, dan tangga besi custom untuk ruang terbatas, mezzanine, atau akses lantai dua.",
     bullets: [
-      "Tangga putar untuk area sempit",
+      "Tangga putar untuk optimasi ruang sempit",
       "Tangga besi custom sesuai tinggi dan lebar ruang",
-      "Railing, anak tangga, dan handrail dapat dikombinasikan",
+      "Handrail dan railing bisa disesuaikan",
     ],
-    note: "Sering dipilih untuk konsep industrial modern dan optimasi ruang.",
+    note: "Banyak dipilih untuk konsep rumah modern dan gaya industrial.",
   },
   {
     badge: "Kategori 05",
     title: "Folding Gate & Gerbang Lipat",
     description:
-      "Pilihan untuk area toko, ruko, garasi, maupun akses yang memerlukan bukaan lebar dan sistem lipat yang efisien.",
+      "Solusi untuk area toko, ruko, garasi, maupun akses lebar yang membutuhkan sistem lipat yang efisien dan aman.",
     bullets: [
-      "Cocok untuk bukaan lebar",
-      "Membantu keamanan area depan properti",
-      "Dapat disesuaikan dengan pola panel dan warna finishing",
+      "Cocok untuk bukaan lebar pada area depan bangunan",
+      "Pilihan panel dan finishing dapat disesuaikan",
+      "Mendukung kebutuhan hunian maupun area komersial",
     ],
-    note: "Baik untuk kebutuhan komersial maupun hunian yang memerlukan akses fleksibel.",
+    note: "Baik untuk properti yang membutuhkan bukaan fleksibel dengan tingkat keamanan tinggi.",
   },
   {
     badge: "Kategori 06",
     title: "Pintu Besi & Panel Besi",
     description:
-      "Pintu besi Bekasi untuk ruang servis, gudang, pintu pengaman, atau akses tambahan yang membutuhkan struktur lebih kokoh.",
+      "Pintu besi Bekasi untuk area servis, gudang, pintu pengaman, atau akses tambahan yang memerlukan struktur kokoh.",
     bullets: [
       "Pintu panel besi untuk area utilitas",
-      "Bisa untuk pintu rumah, gudang, dan ruang servis",
-      "Mendukung fungsi keamanan sekaligus kerapian tampilan",
+      "Bisa untuk rumah, gudang, kios, dan ruang servis",
+      "Tahan pakai dan mudah dirawat",
     ],
-    note: "Sesuai untuk area yang butuh durabilitas dan perawatan mudah.",
+    note: "Sesuai untuk area yang menuntut keamanan dan ketahanan jangka panjang.",
   },
   {
     badge: "Kategori 07",
@@ -249,9 +289,9 @@ export const serviceCategories: ServiceCategory[] = [
     bullets: [
       "Cocok untuk toko dan ruang usaha",
       "Membantu keamanan saat properti tutup",
-      "Bisa dikonsultasikan sesuai ukuran bukaan",
+      "Dapat disesuaikan dengan ukuran bukaan",
     ],
-    note: "Sering dicari untuk kebutuhan usaha kecil dan area penyimpanan.",
+    note: "Sering dibutuhkan pemilik usaha yang ingin akses praktis dan aman setiap hari.",
   },
   {
     badge: "Kategori 08",
@@ -259,11 +299,11 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Kanopi Bekasi untuk teras, carport, area samping rumah, maupun fasad depan dengan tampilan modern dan proporsional.",
     bullets: [
-      "Kanopi teras dan carport",
-      "Bisa menyesuaikan fasad rumah modern",
-      "Menambah fungsi teduh tanpa mengorbankan estetika",
+      "Kanopi teras, balkon, dan carport",
+      "Menyesuaikan fasad rumah dan kebutuhan teduh",
+      "Bisa untuk renovasi maupun finishing rumah baru",
     ],
-    note: "Kategori unggulan untuk pemilik rumah yang sedang renovasi atau finishing bangunan.",
+    note: "Kategori unggulan untuk pemilik rumah yang ingin tampilan depan lebih rapi dan fungsional.",
   },
   {
     badge: "Kategori 09",
@@ -271,23 +311,23 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Menerima perbaikan las retak, penguatan sambungan, cat ulang pagar atau kanopi, dan pembenahan komponen yang sudah ada.",
     bullets: [
-      "Las ulang dan penguatan struktur",
+      "Las ulang dan penguatan struktur lama",
       "Pengecatan ulang pagar, pintu, dan kanopi",
       "Evaluasi kebutuhan perbaikan di lokasi",
     ],
-    note: "Solusi praktis jika Anda belum perlu bikin baru tetapi butuh hasil lebih rapi dan aman.",
+    note: "Pilihan tepat jika Anda belum perlu bikin baru tetapi ingin hasil lebih aman dan rapi.",
   },
   {
     badge: "Kategori 10",
     title: "Layanan Panggilan & Konstruksi Ringan",
     description:
-      "Tersedia layanan panggilan untuk survey, pengukuran, konsultasi desain, dan pekerjaan konstruksi besi sederhana sesuai kebutuhan lapangan.",
+      "Tersedia layanan panggilan untuk survey, pengukuran, konsultasi desain, dan pekerjaan konstruksi besi sederhana.",
     bullets: [
       "Survey dan pengukuran di lokasi",
-      "Diskusi model sebelum produksi",
-      "Pekerjaan besi custom untuk kebutuhan proyek kecil-menengah",
+      "Diskusi model sebelum produksi dimulai",
+      "Pekerjaan custom untuk kebutuhan proyek kecil-menengah",
     ],
-    note: "Memudahkan pelanggan yang ingin proses lebih terarah sebelum order dimulai.",
+    note: "Mempermudah pelanggan yang ingin proses lebih pasti sebelum order dijalankan.",
   },
 ];
 
@@ -304,7 +344,7 @@ export const featuredServices: FeaturedService[] = [
     title: "Pagar Besi Bekasi",
     kicker: "Pagar",
     description:
-      "Pagar besi custom untuk rumah tinggal, ruko, dan fasad depan dengan desain yang rapi dan proporsional.",
+      "Pagar besi custom untuk rumah tinggal, ruko, dan fasad depan dengan desain rapi dan proporsional.",
     image: "/images/pagar-besi-bekasi.jpg",
     alt: "Jasa pagar besi Bekasi",
   },
@@ -312,7 +352,7 @@ export const featuredServices: FeaturedService[] = [
     title: "Kanopi Bekasi",
     kicker: "Kanopi",
     description:
-      "Kanopi teras dan carport untuk kebutuhan rumah modern dengan struktur kokoh dan tampilan bersih.",
+      "Kanopi teras dan carport untuk rumah modern dengan struktur kokoh dan tampilan bersih.",
     image: "/images/kanopi-bekasi.jpg",
     alt: "Kanopi minimalis Bengkel Las Bekasi",
   },
@@ -467,30 +507,30 @@ export const areas = [
   },
 ];
 
-export const testimonials = [
+export const reviewFacts = [
   {
-    tag: "Maps",
-    title: "Lokasi usaha bisa dicek dulu",
+    tag: "Google Rating",
+    title: "4.9 / 5",
     description:
-      "Calon pelanggan dapat membuka Google Maps untuk melihat titik usaha, area sekitar, dan memperkuat rasa aman sebelum order.",
+      "Snapshot rating Google Maps yang Anda lampirkan menunjukkan skor 4.9. Ini kami tampilkan sebagai social proof utama, lalu pengunjung diarahkan untuk memeriksa langsung di Maps.",
   },
   {
-    tag: "Portfolio",
-    title: "Visual pekerjaan bukan gambar palsu",
+    tag: "Review Count",
+    title: "261 review",
     description:
-      "Dokumentasi proyek yang ditampilkan berasal dari pekerjaan bengkel sendiri, sehingga hasil lebih mudah dinilai secara realistis.",
+      "Jumlah review yang terlihat pada snapshot Google Maps kami tampilkan apa adanya agar trust dibangun dari data yang bisa diverifikasi.",
   },
   {
-    tag: "Kontak",
-    title: "Lead diarahkan ke jalur yang paling cepat",
+    tag: "Verifikasi",
+    title: "Lokasi dan ulasan bisa dicek real-time",
     description:
-      "WhatsApp, Instagram, TikTok, dan Maps dipasang jelas supaya proses tanya jawab dan closing tidak terputus.",
+      "Pengunjung dapat membuka Google Maps untuk memeriksa lokasi usaha, membaca ulasan, dan menilai bisnis sebelum menghubungi WhatsApp.",
   },
 ];
 
 export const faqs = [
   {
-    question: "Bengkel las melayani apa saja?",
+    question: "Bengkel las Al-Ihsan Bekasi melayani apa saja?",
     answer:
       "Kami melayani pagar, teralis, stainless steel, tangga putar, folding gate, pintu besi, rolling door, kanopi, konstruksi ringan, perbaikan, pengecatan, dan layanan panggilan.",
   },
@@ -515,7 +555,7 @@ export const faqs = [
       "Klik tombol WhatsApp, kirim kebutuhan Anda, lalu lanjutkan konsultasi ukuran, model, lokasi, dan estimasi pengerjaan bersama tim kami.",
   },
   {
-    question: "Apakah saya bisa cek lokasi sebelum memesan?",
+    question: "Apakah saya bisa cek lokasi dan ulasan sebelum memesan?",
     answer:
       "Bisa. Gunakan tombol Google Maps pada halaman ini untuk membuka lokasi dan melihat ulasan bisnis secara langsung.",
   },

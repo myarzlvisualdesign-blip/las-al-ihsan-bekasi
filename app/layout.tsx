@@ -3,6 +3,8 @@ import { Manrope, Teko } from "next/font/google";
 
 import "./globals.css";
 
+import { LocalBusinessSchema } from "@/components/schema";
+import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 
 const manrope = Manrope({
@@ -18,9 +20,11 @@ const teko = Teko({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
-  title: "Bengkel Las Bekasi | Al-Ihsan – Jasa Pagar, Kanopi & Stainless",
-  description:
-    "Bengkel Las Al-Ihsan Bekasi melayani pagar, kanopi, teralis, rolling door, stainless, dan jasa las panggilan. Cek lokasi & ulasan kami di Google Maps.",
+  ...buildMetadata({
+    title: "Bengkel Las Bekasi | Al-Ihsan – Jasa Pagar, Kanopi & Stainless",
+    description:
+      "Bengkel Las Al-Ihsan Bekasi melayani pagar, kanopi, teralis, rolling door, stainless, dan jasa las panggilan. Cek lokasi & ulasan kami di Google Maps.",
+  }),
   keywords: [
     "bengkel las bekasi",
     "jasa las bekasi",
@@ -33,32 +37,19 @@ export const metadata: Metadata = {
     "rolling door bekasi",
     "folding gate bekasi",
   ],
-  alternates: {
-    canonical: siteConfig.siteUrl,
-  },
-  openGraph: {
-    type: "website",
-    locale: "id_ID",
-    url: siteConfig.siteUrl,
-    title: "Bengkel Las Bekasi | Al-Ihsan – Jasa Pagar, Kanopi & Stainless",
-    description:
-      "Bengkel Las Al-Ihsan Bekasi melayani pagar, kanopi, teralis, rolling door, stainless, dan jasa las panggilan. Cek lokasi & ulasan kami di Google Maps.",
-    siteName: siteConfig.name,
-    images: [
+  icons: {
+    icon: [
       {
-        url: "/images/hero-kanopi-modern.jpg",
-        width: 1600,
-        height: 1200,
-        alt: "Logo Bengkel Las Al-Ihsan Bekasi dan dokumentasi proyek kanopi modern",
+        url: "/icon.png",
+        type: "image/png",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Bengkel Las Bekasi | Al-Ihsan – Jasa Pagar, Kanopi & Stainless",
-    description:
-      "Bengkel Las Al-Ihsan Bekasi melayani pagar, kanopi, teralis, rolling door, stainless, dan jasa las panggilan.",
-    images: ["/images/hero-kanopi-modern.jpg"],
+    apple: [
+      {
+        url: "/icon.png",
+        type: "image/png",
+      },
+    ],
   },
   robots: {
     index: true,
@@ -77,6 +68,7 @@ export default function RootLayout({
       className={`${manrope.variable} ${teko.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-background text-foreground">
+        <LocalBusinessSchema />
         {children}
       </body>
     </html>
