@@ -23,7 +23,7 @@ export default function Home() {
         <HeroSection />
         <ValuePropsSection />
         <AdvantagesSection />
-        <ServicesSection />
+        <ServicesSection introOnly />
         <PortfolioSection />
         <AboutSection />
         <AreasSection />

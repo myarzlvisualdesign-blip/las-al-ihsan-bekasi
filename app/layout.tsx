@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Teko } from "next/font/google";
+import { Barlow_Condensed, Manrope } from "next/font/google";
 
 import "./globals.css";
 
@@ -12,10 +12,10 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
-const teko = Teko({
+const barlowCondensed = Barlow_Condensed({
   variable: "--font-alihsan-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${manrope.variable} ${teko.variable} scroll-smooth`}
+      className={`${manrope.variable} ${barlowCondensed.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-background text-foreground">
         <LocalBusinessSchema />

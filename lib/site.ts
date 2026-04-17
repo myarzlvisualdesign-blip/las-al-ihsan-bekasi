@@ -344,49 +344,49 @@ export const featuredServices: FeaturedService[] = [
     title: "Pagar Besi Bekasi",
     kicker: "Pagar",
     description:
-      "Pagar besi custom untuk rumah tinggal, ruko, dan fasad depan dengan desain rapi dan proporsional.",
-    image: "/images/pagar-besi-bekasi.jpg",
-    alt: "Jasa pagar besi Bekasi",
+      "Model sliding gate dengan kombinasi warna tegas untuk rumah yang ingin keamanan dan tampilan fasad lebih modern.",
+    image: "/images/pagar-sliding-oranye-abu.jpg",
+    alt: "Pagar sliding rumah jasa las Bekasi",
   },
   {
     title: "Kanopi Bekasi",
     kicker: "Kanopi",
     description:
-      "Kanopi teras dan carport untuk rumah modern dengan struktur kokoh dan tampilan bersih.",
-    image: "/images/kanopi-bekasi.jpg",
-    alt: "Kanopi minimalis Bengkel Las Bekasi",
+      "Kanopi rumah minimalis dengan garis atap yang rapi untuk teras dan area depan bangunan.",
+    image: "/images/kanopi-rumah-minimalis.jpg",
+    alt: "Kanopi rumah minimalis Bengkel Las Bekasi",
   },
   {
-    title: "Stainless Steel",
+    title: "Railing Stainless & Kaca",
     kicker: "Stainless",
     description:
-      "Railing stainless dan kombinasi kaca untuk rumah yang ingin tampilan lebih modern dan ringan.",
-    image: "/images/stainless-bekasi.jpg",
-    alt: "Stainless steel Bekasi untuk railing tangga",
+      "Railing tangga stainless dengan panel kaca untuk interior rumah yang ingin terlihat bersih dan premium.",
+    image: "/images/tangga-kaca-stainless.jpg",
+    alt: "Railing tangga stainless dan kaca Bekasi",
   },
   {
-    title: "Tangga Putar & Tangga Besi",
+    title: "Tangga Besi Industrial",
     kicker: "Tangga",
     description:
-      "Tangga putar dan tangga custom untuk ruang terbatas maupun konsep industrial pada rumah dua lantai.",
-    image: "/images/tangga-besi-bekasi.jpg",
-    alt: "Tangga besi custom Bengkel Las Bekasi",
+      "Tangga besi dengan karakter industrial untuk ruang sempit maupun area mezzanine yang butuh solusi kuat.",
+    image: "/images/tangga-besi-hitam-industrial.jpg",
+    alt: "Tangga besi industrial Bengkel Las Bekasi",
   },
   {
-    title: "Folding Gate Bekasi",
-    kicker: "Folding Gate",
-    description:
-      "Gerbang lipat untuk kebutuhan akses lebar, area depan rumah, kios, maupun bukaan properti komersial.",
-    image: "/images/folding-gate-bekasi.jpg",
-    alt: "Folding gate jasa las Bekasi",
-  },
-  {
-    title: "Pintu Besi Bekasi",
+    title: "Pintu Custom Motif",
     kicker: "Pintu Besi",
     description:
-      "Pintu panel besi untuk area servis, gudang, dan kebutuhan pengaman yang mengutamakan kekokohan.",
-    image: "/images/pintu-besi-panel-bekasi.jpg",
-    alt: "Pintu besi panel Bengkel Las Bekasi",
+      "Pintu besi custom dengan potongan motif untuk proyek yang ingin tampil lebih unik dan punya karakter kuat.",
+    image: "/images/pintu-custom-motif-macan.jpg",
+    alt: "Pintu besi custom motif Bengkel Las Bekasi",
+  },
+  {
+    title: "Pintu Panel Besi Bekasi",
+    kicker: "Pintu Besi",
+    description:
+      "Pintu besi panel dengan kombinasi bidang lebar yang cocok untuk area servis, garasi, dan akses samping bangunan.",
+    image: "/images/pintu-besi-panel-wood.jpg",
+    alt: "Pintu panel besi Bekasi",
   },
 ];
 
@@ -411,76 +411,76 @@ export type PortfolioItem = {
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: "Kanopi modern untuk fasad rumah",
+    title: "Kanopi rumah minimalis depan fasad",
     category: "Kanopi",
     description:
-      "Pengerjaan kanopi modern yang menyatu dengan fasad rumah dan tetap proporsional dari sisi tampilan.",
-    image: "/images/hero-kanopi-modern.jpg",
-    alt: "Kanopi rumah modern jasa las Bekasi",
+      "Kanopi untuk rumah tinggal yang tetap ringan dilihat dari depan tetapi tetap kokoh untuk perlindungan teras.",
+    image: "/images/kanopi-rumah-minimalis.jpg",
+    alt: "Kanopi rumah minimalis jasa las Bekasi",
   },
   {
-    title: "Gerbang besi garis vertikal",
+    title: "Sliding gate kombinasi abu dan oranye",
     category: "Pagar",
     description:
-      "Model gerbang besi yang tegas dan bersih, cocok untuk rumah modern dengan garis fasad sederhana.",
-    image: "/images/gerbang-besi-bekasi.jpg",
-    alt: "Gerbang besi modern jasa las Bekasi",
+      "Pagar sliding dengan permainan warna dan kisi yang tegas untuk rumah modern yang ingin tampil lebih berbeda.",
+    image: "/images/pagar-sliding-oranye-abu.jpg",
+    alt: "Pagar sliding rumah Bekasi",
   },
   {
-    title: "Canopy carport bentang lebar",
-    category: "Kanopi",
+    title: "Gerbang laser-cut putih dekoratif",
+    category: "Pagar",
     description:
-      "Area carport yang dibuat teduh tanpa menghilangkan kesan lega di bagian depan rumah.",
-    image: "/images/kanopi-carport-bekasi.jpg",
-    alt: "Kanopi carport Bengkel Las Bekasi",
+      "Gerbang putih dengan panel potong dekoratif untuk proyek yang ingin keamanan tetap jalan tanpa kehilangan nilai estetika.",
+    image: "/images/pagar-laser-cut-putih.jpg",
+    alt: "Gerbang laser cut putih Bekasi",
   },
   {
-    title: "Railing stainless kombinasi kaca",
+    title: "Tangga stainless kaca interior",
     category: "Stainless",
     description:
-      "Pekerjaan stainless steel dan kaca untuk interior rumah yang terlihat bersih dan modern.",
-    image: "/images/stainless-bekasi.jpg",
-    alt: "Railing stainless steel Bekasi",
+      "Railing stainless kombinasi kaca untuk interior rumah yang butuh hasil lebih bersih, presisi, dan modern.",
+    image: "/images/tangga-kaca-stainless.jpg",
+    alt: "Tangga stainless kaca interior Bekasi",
   },
   {
-    title: "Tangga besi custom model industrial",
+    title: "Tangga besi hitam model industrial",
     category: "Tangga",
     description:
-      "Tangga besi custom dengan karakter industrial untuk kebutuhan ruang yang efisien dan kuat.",
-    image: "/images/tangga-besi-bekasi.jpg",
-    alt: "Tangga besi custom jasa las Bekasi",
+      "Tangga besi custom dengan garis tegas untuk rumah bertingkat yang membutuhkan solusi kuat dan hemat ruang.",
+    image: "/images/tangga-besi-hitam-industrial.jpg",
+    alt: "Tangga besi hitam industrial Bekasi",
   },
   {
-    title: "Pintu panel besi area utilitas",
+    title: "Pintu custom motif macan",
     category: "Pintu Besi",
     description:
-      "Pintu panel besi dengan tampilan rapi untuk area servis atau akses samping bangunan.",
-    image: "/images/pintu-besi-panel-bekasi.jpg",
-    alt: "Pintu besi panel jasa las Bekasi",
+      "Pintu custom dengan potongan motif artistik untuk kebutuhan proyek yang ingin tampil lebih unik dan berkarakter.",
+    image: "/images/pintu-custom-motif-macan.jpg",
+    alt: "Pintu custom motif besi Bekasi",
   },
   {
-    title: "Folding gate warna silver kombinasi panel",
-    category: "Folding Gate",
+    title: "Pintu panel besi kombinasi bidang besar",
+    category: "Pintu Besi",
     description:
-      "Gerbang lipat dengan bukaan lebar untuk area depan bangunan yang memerlukan akses fleksibel.",
-    image: "/images/folding-gate-bekasi.jpg",
-    alt: "Folding gate Bengkel Las Bekasi",
+      "Pintu panel besi dengan komposisi bidang tegas untuk akses servis, garasi, atau area samping bangunan.",
+    image: "/images/pintu-besi-panel-wood.jpg",
+    alt: "Pintu panel besi besar Bekasi",
   },
   {
-    title: "Pagar putih dekoratif",
+    title: "Gerbang hitam ornamental untuk carport",
     category: "Pagar",
     description:
-      "Pilihan pagar dekoratif dengan aksen potong motif untuk fasad yang ingin tampil lebih menonjol.",
-    image: "/images/pagar-dekoratif-putih.jpg",
-    alt: "Pagar dekoratif putih Bekasi",
+      "Gerbang hitam dengan pola ornamental yang cocok untuk area carport dan rumah modern dengan fasad tegas.",
+    image: "/images/gerbang-hitam-ornamental.jpg",
+    alt: "Gerbang hitam ornamental Bekasi",
   },
   {
-    title: "Railing tangga minimalis",
+    title: "Panel railing floral untuk balkon",
     category: "Railing",
     description:
-      "Railing tangga model minimalis dengan finishing hitam yang bersih untuk interior rumah.",
-    image: "/images/railing-tangga-bekasi.jpg",
-    alt: "Railing tangga minimalis Bengkel Las Bekasi",
+      "Panel railing dengan motif floral untuk detail balkon atau teras yang ingin terlihat lebih dekoratif.",
+    image: "/images/panel-railing-floral.jpg",
+    alt: "Panel railing floral Bengkel Las Bekasi",
   },
 ];
 

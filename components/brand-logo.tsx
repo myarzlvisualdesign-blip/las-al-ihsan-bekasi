@@ -5,6 +5,46 @@ type BrandLogoProps = {
   className?: string;
 };
 
+type BrandMarkProps = {
+  className?: string;
+};
+
+type BrandLockupProps = {
+  className?: string;
+};
+
+export function BrandMark({ className = "" }: BrandMarkProps) {
+  return (
+    <div
+      className={`inline-flex items-center justify-center overflow-hidden rounded-2xl border border-[#d6e0f5] bg-white shadow-[0_14px_32px_rgba(8,35,84,0.14)] ${className}`}
+    >
+      <Image
+        src="/icon.png"
+        alt="Icon Bengkel Las Al-Ihsan Bekasi"
+        width={72}
+        height={72}
+        className="h-full w-full object-cover"
+      />
+    </div>
+  );
+}
+
+export function BrandLockup({ className = "" }: BrandLockupProps) {
+  return (
+    <div className={`inline-flex items-center gap-3 ${className}`}>
+      <BrandMark className="h-12 w-12 shrink-0 rounded-[1rem]" />
+      <div className="min-w-0">
+        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#e11d3f]">
+          Bengkel Las
+        </p>
+        <p className="truncate font-display text-[1.3rem] leading-none text-[#17336c] sm:text-[1.55rem]">
+          Al-Ihsan Bekasi
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function BrandLogo({
   compact = false,
   className = "",
@@ -16,9 +56,9 @@ export function BrandLogo({
       <Image
         src="/images/logo-al-ihsan.png"
         alt="Logo Bengkel Las Al-Ihsan Bekasi"
-        width={compact ? 280 : 760}
-        height={compact ? 76 : 205}
-        sizes={compact ? "280px" : "(max-width: 768px) 90vw, 760px"}
+        width={compact ? 240 : 760}
+        height={compact ? 65 : 205}
+        sizes={compact ? "240px" : "(max-width: 768px) 90vw, 760px"}
         className="h-auto w-full"
         priority={!compact}
       />

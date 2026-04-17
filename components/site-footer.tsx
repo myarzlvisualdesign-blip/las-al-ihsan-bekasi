@@ -9,7 +9,7 @@ export function SiteFooter() {
     <footer className="border-t border-[#d6e0f0] bg-[#f4f7fe]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[1.15fr_0.95fr_0.9fr] lg:px-8">
         <div>
-          <BrandLogo compact />
+          <BrandLogo compact className="max-w-[13rem]" />
           <p className="mt-4 max-w-md text-sm leading-7 text-slate-600">
             Bengkel Las Al-Ihsan Bekasi melayani pagar, kanopi, stainless,
             tangga, pintu besi, rolling door, perbaikan, pengecatan, dan
