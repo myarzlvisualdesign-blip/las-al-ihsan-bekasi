@@ -22,7 +22,7 @@ export function SectionHeading({
       <h2 className="mt-4 font-display text-4xl leading-none text-white sm:text-5xl">
         {title}
       </h2>
-      <p className="mt-5 text-sm leading-8 text-zinc-400 sm:text-base">
+      <p className="mt-5 text-sm leading-8 text-zinc-300 sm:text-base">
         {description}
       </p>
     </div>

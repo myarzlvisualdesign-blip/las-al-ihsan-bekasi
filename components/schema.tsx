@@ -8,7 +8,7 @@ export function LocalBusinessSchema() {
         "@type": "LocalBusiness",
         "@id": `${siteConfig.siteUrl}#business`,
         name: siteConfig.name,
-        image: `${siteConfig.siteUrl}/images/hero-kanopi-modern.jpg`,
+        image: `${siteConfig.siteUrl}/images/logo-al-ihsan.png`,
         url: siteConfig.siteUrl,
         telephone: siteConfig.primaryPhone,
         sameAs: [

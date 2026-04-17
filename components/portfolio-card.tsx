@@ -8,7 +8,7 @@ type PortfolioCardProps = {
 
 export function PortfolioCard({ item }: PortfolioCardProps) {
   return (
-    <article className="overflow-hidden rounded-[30px] border border-white/10 bg-white/5">
+    <article className="overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(0,0,0,0.16))] shadow-[0_24px_70px_rgba(0,0,0,0.16)]">
       <div className="relative aspect-[4/3]">
         <Image
           src={item.image}
@@ -23,7 +23,7 @@ export function PortfolioCard({ item }: PortfolioCardProps) {
           {item.category}
         </p>
         <h3 className="mt-3 text-xl font-semibold text-white">{item.title}</h3>
-        <p className="mt-2 text-sm leading-7 text-zinc-400">{item.description}</p>
+        <p className="mt-2 text-sm leading-7 text-zinc-300">{item.description}</p>
       </div>
     </article>
   );

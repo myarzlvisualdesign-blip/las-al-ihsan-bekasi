@@ -7,6 +7,7 @@ import { PortfolioCard } from "@/components/portfolio-card";
 import { LocalBusinessSchema } from "@/components/schema";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
+import { ServiceCategoryCard } from "@/components/service-category-card";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SocialLinks } from "@/components/social-links";
@@ -16,6 +17,7 @@ import {
   faqs,
   featuredServices,
   portfolioItems,
+  serviceCategories,
   siteConfig,
   testimonials,
   trustSignals,
@@ -32,21 +34,35 @@ export default function Home() {
           id="top"
           className="section-shell border-b border-white/10 pt-24 sm:pt-28"
         >
-          <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-24">
+          <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:pb-24">
             <div className="flex flex-col justify-center">
-              <div className="mb-6">
-                <BrandLogo className="max-w-fit" />
+              <div className="mb-5 flex flex-wrap gap-2">
+                {siteConfig.heroTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/12 bg-white/7 px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#dbe5f7]"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-              <h1 className="max-w-4xl font-display text-5xl leading-none tracking-tight text-white sm:text-6xl lg:text-7xl">
-                Bengkel Las Al-Ihsan Bekasi untuk pagar, kanopi, stainless, dan
-                pengerjaan custom yang rapi.
+              <BrandLogo className="max-w-[42rem]" />
+              <h1 className="mt-8 max-w-4xl font-display text-5xl leading-none tracking-tight text-white sm:text-6xl lg:text-7xl">
+                Bengkel Las Al-Ihsan Bekasi untuk pagar, kanopi, stainless,
+                pintu besi, folding gate, rolling door, dan pengerjaan custom
+                yang rapi.
               </h1>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg">
-                Bengkel Las Al-Ihsan Bekasi melayani{" "}
+              <p className="mt-6 max-w-3xl text-base leading-8 text-zinc-300 sm:text-lg">
+                Jika Anda sedang mencari{" "}
+                <a className="text-brand-amber" href="#services">
+                  bengkel las Bekasi
+                </a>{" "}
+                atau{" "}
                 <a className="text-brand-amber" href="#services">
                   jasa las Bekasi
                 </a>{" "}
-                untuk rumah, ruko, dan proyek renovasi. Kami mengerjakan{" "}
+                untuk rumah, ruko, dan kebutuhan renovasi, Bengkel Las
+                Al-Ihsan Bekasi siap membantu. Kami menerima pesanan{" "}
                 <a className="text-brand-amber" href="#services">
                   pagar besi Bekasi
                 </a>
@@ -54,13 +70,23 @@ export default function Home() {
                 <a className="text-brand-amber" href="#services">
                   kanopi Bekasi
                 </a>
-                , teralis, pintu besi, railing, dan{" "}
+                , teralis, tangga putar, folding gate, pintu besi, rolling
+                door,{" "}
                 <a className="text-brand-amber" href="#services">
                   stainless Bekasi
-                </a>{" "}
-                dengan layanan survey, perbaikan, pengecatan, dan panggilan ke
-                lokasi.
+                </a>
+                , serta perbaikan, pengecatan, dan layanan panggilan.
               </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {siteConfig.serviceChecklist.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-[#314f85] bg-[#162645] px-4 py-2 text-sm text-white"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href={siteConfig.whatsappPrimaryUrl}>
                   Chat WhatsApp Utama
@@ -105,7 +131,10 @@ export default function Home() {
               <div className="absolute -left-6 top-8 hidden h-36 w-36 rounded-full bg-brand-amber/25 blur-3xl lg:block" />
               <div className="absolute -right-10 bottom-12 hidden h-40 w-40 rounded-full bg-white/18 blur-3xl lg:block" />
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900 shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
-                <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(239,57,69,0.22),rgba(255,255,255,0)_38%,rgba(36,61,107,0.6))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(239,57,69,0.18),rgba(255,255,255,0)_38%,rgba(36,61,107,0.66))]" />
+                <div className="absolute left-5 top-5 z-10 rounded-full bg-white/92 px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#243d6b] shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+                  Dokumentasi proyek asli
+                </div>
                 <div className="relative aspect-[4/5] w-full sm:aspect-[5/4] lg:aspect-[4/5]">
                   <Image
                     src="/images/hero-kanopi-modern.jpg"
@@ -116,36 +145,56 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-6 sm:p-8">
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-white/10 bg-black/50 p-4 backdrop-blur">
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                  <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+                    <div className="rounded-[1.75rem] border border-white/12 bg-[#0d1b35]/84 p-5 backdrop-blur">
                       <p className="text-xs uppercase tracking-[0.28em] text-brand-amber/85">
-                        Fokus Pengerjaan
+                        Menerima Pesanan
                       </p>
-                      <p className="mt-2 text-lg font-semibold text-white">
-                        Pagar, kanopi, stainless, railing, teralis, dan pintu
-                        besi.
-                      </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {siteConfig.serviceChecklist.map((item) => (
+                          <span
+                            key={item}
+                            className="rounded-full border border-white/10 bg-white/8 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="rounded-2xl border border-white/10 bg-black/50 p-4 backdrop-blur">
-                      <p className="text-xs uppercase tracking-[0.28em] text-brand-amber/85">
-                        Area Layanan
+                    <div className="rounded-[1.75rem] border border-[#dce5f5] bg-white/96 p-5 shadow-[0_18px_40px_rgba(0,0,0,0.14)]">
+                      <p className="text-xs uppercase tracking-[0.24em] text-[#ef3945]">
+                        Kontak Cepat
                       </p>
-                      <p className="mt-2 text-lg font-semibold text-white">
-                        Bekasi, Tambun, Cikarang, Babelan, dan sekitarnya.
-                      </p>
+                      <div className="mt-4 grid gap-3">
+                        {siteConfig.whatsappContacts.map((contact) => (
+                          <a
+                            key={contact.number}
+                            href={contact.url}
+                            className="rounded-2xl border border-[#dce5f5] bg-[#f6f9fe] px-4 py-3 text-sm text-[#243d6b] transition hover:border-[#243d6b]"
+                          >
+                            <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[#ef3945]">
+                              {contact.label}
+                            </span>
+                            <span className="mt-1 block text-lg font-semibold">
+                              {contact.number}
+                            </span>
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="mt-4 ml-auto max-w-sm rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
+              <div className="mt-4 rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.28em] text-brand-amber">
-                  Brand Identity
+                  Informasi Usaha
                 </p>
                 <p className="mt-3 text-sm leading-7 text-zinc-300">
-                  Logo, warna, dan jalur sosial resmi sekarang diselaraskan
-                  dengan identitas Bengkel Las Al-Ihsan: putih, biru, merah,
-                  dengan ikon WhatsApp, Instagram, TikTok, dan Maps yang jelas.
+                  Identitas brand kini memakai logo asli Bengkel Las Al-Ihsan
+                  Bekasi, dengan penegasan layanan yang memang ada di lapangan:
+                  terima perbaikan, pengecatan, layanan panggilan, serta
+                  kategori pengerjaan yang lebih lengkap dan profesional.
                 </p>
               </div>
             </div>
@@ -172,8 +221,8 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <SectionHeading
               eyebrow="Keunggulan"
-              title="Jasa bengkel las Bekasi yang fokus pada hasil kokoh, komunikasi jelas, dan pengerjaan rapi."
-              description="Struktur marketing kami menekankan hal yang paling dicari calon pelanggan: hasil nyata, proses jelas, lokasi yang mudah dicek, dan jalur WhatsApp yang cepat untuk closing."
+              title="Jasa bengkel las Bekasi yang fokus pada hasil kokoh, identitas usaha jelas, dan jalur closing yang cepat."
+              description="Struktur halaman ini disusun agar calon pelanggan langsung paham: apa saja yang dikerjakan, bagaimana cara menghubungi, area layanan, dan bukti bahwa bisnis ini memang nyata."
             />
             <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {siteConfig.advantages.map((item) => (
@@ -187,7 +236,7 @@ export default function Home() {
                   <h3 className="mt-4 text-xl font-semibold text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-zinc-400">
+                  <p className="mt-3 text-sm leading-7 text-zinc-300">
                     {item.description}
                   </p>
                 </article>
@@ -200,26 +249,36 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <SectionHeading
               eyebrow="Layanan"
-              title="Layanan utama Bengkel Las Al-Ihsan Bekasi"
-              description="Semua layanan disusun natural untuk target keyword lokal seperti bengkel las Bekasi, jasa las Bekasi, pagar besi Bekasi, kanopi Bekasi, dan stainless Bekasi."
+              title="Kategori layanan Bengkel Las Al-Ihsan Bekasi dibuat lebih lengkap dan lebih jelas"
+              description="Bagian ini sengaja diperdalam agar calon pelanggan langsung melihat scope pengerjaan: pagar, teralis, stainless, tangga putar, folding gate, pintu besi, rolling door, kanopi, perbaikan, pengecatan, dan layanan panggilan."
             />
-            <div className="mt-10 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
-              <div className="grid gap-6 md:grid-cols-2">
+            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {serviceCategories.map((category) => (
+                <ServiceCategoryCard
+                  key={category.title}
+                  category={category}
+                />
+              ))}
+            </div>
+            <div className="mt-12 grid gap-6 lg:grid-cols-[1.32fr_0.68fr]">
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {featuredServices.map((service) => (
                   <ServiceCard key={service.title} service={service} />
                 ))}
               </div>
               <aside className="rounded-[32px] border border-white/10 bg-white/5 p-6 lg:p-8">
                 <p className="text-sm uppercase tracking-[0.28em] text-brand-amber">
-                  Layanan Tambahan
+                  Siap Dikerjakan
                 </p>
                 <h3 className="mt-4 text-2xl font-semibold text-white">
-                  Siap menerima perbaikan, pengecatan, dan layanan panggilan.
+                  Terima perbaikan, pengecatan, dan layanan panggilan untuk
+                  kebutuhan bengkel las terdekat Bekasi.
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-zinc-400">
-                  Jika Anda sedang mencari bengkel las terdekat Bekasi untuk
-                  pekerjaan custom maupun perbaikan, tim kami siap survey dan
-                  memberi arahan kebutuhan material yang sesuai.
+                <p className="mt-4 text-sm leading-7 text-zinc-300">
+                  Jika Anda belum butuh bikin baru, kami juga bisa membantu
+                  pembenahan pagar, pintu, kanopi, atau komponen besi lain yang
+                  sudah ada. Kirim foto kondisi lapangan lewat WhatsApp agar
+                  arahan awal lebih cepat.
                 </p>
                 <ul className="mt-6 grid gap-3 text-sm text-zinc-300">
                   {additionalServices.map((service) => (
@@ -235,7 +294,10 @@ export default function Home() {
                   <ButtonLink href={siteConfig.whatsappPrimaryUrl}>
                     Minta Penawaran via WhatsApp
                   </ButtonLink>
-                  <ButtonLink href={siteConfig.whatsappSecondaryUrl} variant="ghost">
+                  <ButtonLink
+                    href={siteConfig.whatsappSecondaryUrl}
+                    variant="ghost"
+                  >
                     Chat Nomor Cadangan
                   </ButtonLink>
                 </div>
@@ -251,8 +313,8 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <SectionHeading
               eyebrow="Portfolio"
-              title="Dokumentasi proyek asli dari folder LAS"
-              description="Kami memakai gambar proyek nyata untuk membantu calon pelanggan menilai kualitas finishing, model desain, dan kecocokan hasil sebelum menghubungi WhatsApp."
+              title="Portfolio asli untuk membantu calon pelanggan menilai kualitas dan model pekerjaan"
+              description="Kami memakai gambar proyek nyata dari folder LAS agar hasil yang Anda lihat benar-benar dekat dengan pekerjaan bengkel, bukan placeholder generik."
             />
             <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {portfolioItems.map((item) => (
@@ -278,27 +340,36 @@ export default function Home() {
             <div className="flex flex-col justify-center">
               <SectionHeading
                 eyebrow="Tentang Kami"
-                title="Bengkel Las Al-Ihsan Bekasi melayani pengerjaan rumah tinggal, ruko, dan proyek custom."
-                description="Kami membangun kepercayaan lewat lokasi yang jelas, dokumentasi proyek nyata, dan komunikasi langsung lewat WhatsApp. Ini penting untuk mendukung closing, SEO lokal, dan validitas bisnis di Google Maps."
+                title="Bengkel Las Al-Ihsan Bekasi melayani pesanan baru, pekerjaan custom, hingga perbaikan di lapangan."
+                description="Pendekatannya kami buat jelas: pelanggan bisa melihat lokasi, portfolio, sosial resmi, lalu langsung masuk ke WhatsApp. Cara ini jauh lebih efektif untuk membangun trust dan mendukung closing client."
                 align="left"
               />
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
                   <p className="text-sm font-semibold text-white">
-                    Pengerjaan yang dilayani
+                    Pekerjaan baru & custom
                   </p>
                   <p className="mt-2 text-sm leading-7 text-zinc-400">
-                    Pagar, teralis, stainless steel, tangga putar, folding gate,
+                    Pagar, teralis, stainless, tangga putar, folding gate,
                     pintu besi, rolling door, hingga kanopi.
                   </p>
                 </div>
                 <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
                   <p className="text-sm font-semibold text-white">
-                    Untuk kebutuhan lapangan
+                    Perbaikan & finishing
                   </p>
                   <p className="mt-2 text-sm leading-7 text-zinc-400">
-                    Perbaikan, pengecatan, dan layanan panggilan untuk area
-                    Bekasi dan sekitarnya.
+                    Las ulang, penguatan struktur, pengecatan, dan pembenahan
+                    komponen yang sudah terpasang.
+                  </p>
+                </div>
+                <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
+                  <p className="text-sm font-semibold text-white">
+                    Survey & layanan panggilan
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-zinc-400">
+                    Siap untuk cek lokasi, ukur area, dan memberi saran awal
+                    sebelum pekerjaan dimulai.
                   </p>
                 </div>
               </div>
@@ -319,7 +390,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="Area Layanan"
               title="Area layanan bengkel las terdekat untuk Bekasi dan sekitarnya"
-              description="Fokus utama kami adalah Bekasi, dengan jangkauan survey dan pengerjaan ke Tambun, Cikarang, Babelan, dan area sekitar sesuai kebutuhan proyek."
+              description="Fokus utama kami ada di Bekasi, dengan jangkauan survey dan pengerjaan ke Tambun, Cikarang, Babelan, dan area sekitar sesuai kebutuhan proyek."
             />
             <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {areas.map((area) => (
@@ -343,8 +414,8 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <SectionHeading
               eyebrow="Testimoni"
-              title="Testimoni & kepercayaan pelanggan"
-              description="Agar tidak menampilkan social proof palsu, halaman ini mengarahkan calon pelanggan untuk melihat ulasan asli langsung di Google Maps. Di bawah ini adalah alasan kenapa bisnis ini mudah dipercaya sebelum deal."
+              title="Trust dibangun dari lokasi, dokumentasi, dan jalur kontak yang transparan"
+              description="Daripada membuat testimoni buatan, halaman ini menekankan bukti yang benar-benar bisa dicek calon pelanggan: Google Maps, foto proyek, identitas usaha, dan sosial media resmi."
             />
             <div className="mt-10 grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
               <div className="rounded-[32px] border border-brand-amber/20 bg-brand-amber/8 p-6 lg:p-8">
@@ -355,10 +426,10 @@ export default function Home() {
                   Silakan cek lokasi dan ulasan kami di Google Maps agar Anda
                   lebih yakin sebelum memesan.
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-zinc-300">
+                <p className="mt-4 text-sm leading-7 text-zinc-200">
                   Ini membantu calon pelanggan memverifikasi bisnis, melihat
-                  foto, dan menilai kenyamanan bertransaksi sebelum menghubungi
-                  WhatsApp.
+                  titik lokasi, dan menilai kenyamanan bertransaksi sebelum
+                  menghubungi WhatsApp.
                 </p>
                 <div className="mt-8 flex flex-col gap-3">
                   <ButtonLink href={siteConfig.mapsUrl}>Lihat Ulasan</ButtonLink>
@@ -379,7 +450,7 @@ export default function Home() {
                     <h3 className="mt-4 text-xl font-semibold text-white">
                       {item.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-zinc-400">
+                    <p className="mt-3 text-sm leading-7 text-zinc-300">
                       {item.description}
                     </p>
                   </article>
@@ -393,8 +464,8 @@ export default function Home() {
           <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <SectionHeading
               eyebrow="FAQ"
-              title="Pertanyaan yang paling sering ditanyakan"
-              description="Struktur FAQ membantu SEO, memperjelas proses kerja, dan memudahkan calon pelanggan yang mencari bengkel las Bekasi secara cepat dari mobile."
+              title="Pertanyaan yang paling sering ditanyakan sebelum order"
+              description="Struktur FAQ membantu SEO, memperjelas proses kerja, dan memudahkan calon pelanggan yang mencari bengkel las Bekasi dari mobile."
               align="center"
             />
             <div className="mt-10 space-y-4">
@@ -406,7 +477,7 @@ export default function Home() {
                   <summary className="cursor-pointer list-none pr-8 text-lg font-semibold text-white marker:hidden">
                     {faq.question}
                   </summary>
-                  <p className="mt-4 text-sm leading-7 text-zinc-400">
+                  <p className="mt-4 text-sm leading-7 text-zinc-300">
                     {faq.answer}
                   </p>
                 </details>
@@ -477,27 +548,30 @@ export default function Home() {
 
         <section className="section-shell">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-            <div className="overflow-hidden rounded-[2.25rem] border border-brand-amber/20 bg-[linear-gradient(135deg,rgba(250,204,21,0.16),rgba(0,0,0,0.55))] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.28)] lg:p-12">
+            <div className="overflow-hidden rounded-[2.25rem] border border-brand-amber/20 bg-[linear-gradient(135deg,rgba(239,57,69,0.18),rgba(17,28,54,0.9))] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.28)] lg:p-12">
               <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
                 <div>
                   <p className="text-sm uppercase tracking-[0.28em] text-brand-amber">
                     CTA Penutup
                   </p>
                   <h2 className="mt-4 font-display text-4xl leading-none text-white sm:text-5xl">
-                    Siap konsultasi kebutuhan pagar, kanopi, stainless, atau
-                    perbaikan las di Bekasi?
+                    Siap konsultasi kebutuhan pagar, kanopi, stainless, pintu
+                    besi, atau perbaikan las di Bekasi?
                   </h2>
                   <p className="mt-5 max-w-2xl text-sm leading-8 text-zinc-200 sm:text-base">
                     Kirim foto lokasi, ukuran kasar, atau inspirasi desain Anda
-                    lewat WhatsApp. Tim kami akan membantu arahan kebutuhan dan
-                    penawaran awal secepat mungkin.
+                    lewat WhatsApp. Tim kami akan membantu arahan kebutuhan,
+                    estimasi awal, dan langkah berikutnya secepat mungkin.
                   </p>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <ButtonLink href={siteConfig.whatsappPrimaryUrl}>
                     Chat WhatsApp Utama
                   </ButtonLink>
-                  <ButtonLink href={siteConfig.whatsappSecondaryUrl} variant="secondary">
+                  <ButtonLink
+                    href={siteConfig.whatsappSecondaryUrl}
+                    variant="secondary"
+                  >
                     Chat WhatsApp Kedua
                   </ButtonLink>
                   <ButtonLink href="#portfolio" variant="ghost">

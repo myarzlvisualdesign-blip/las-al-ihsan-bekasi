@@ -9,8 +9,9 @@ export function SiteFooter() {
         <div>
           <BrandLogo compact />
           <p className="mt-4 max-w-md text-sm leading-7 text-slate-600">
-            Landing page SEO-ready untuk jasa pagar, kanopi, stainless, dan
-            pengerjaan las custom di Bekasi.
+            Bengkel Las Al-Ihsan Bekasi melayani pagar, kanopi, stainless,
+            tangga, pintu besi, rolling door, perbaikan, pengecatan, dan
+            layanan panggilan untuk area Bekasi dan sekitarnya.
           </p>
           <SocialLinks className="mt-5" iconOnly />
         </div>
