@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #070707;
+  --foreground: #f6f3ed;
+  --color-ink: #0f172a;
+  --color-brand-amber: #facc15;
+  --color-brand-amber-deep: #eab308;
+  --color-brand-steel: #94a3b8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-amber: var(--color-brand-amber);
+  --color-brand-amber-deep: var(--color-brand-amber-deep);
+  --color-brand-steel: var(--color-brand-steel);
+  --color-ink: var(--color-ink);
+  --font-sans: var(--font-alihsan-body);
+  --font-display: var(--font-alihsan-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-alihsan-body), sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(250, 204, 21, 0.14), transparent 24%),
+    linear-gradient(180deg, #090909 0%, #050505 52%, #080808 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.36), transparent 92%);
+  z-index: -1;
+}
+
+::selection {
+  background: rgba(250, 204, 21, 0.8);
+  color: #111111;
+}
+
+a {
+  text-underline-offset: 0.25em;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.section-shell {
+  position: relative;
+}
