@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { siteConfig } from "@/lib/site";
+import { documentationMedia, siteConfig } from "@/lib/site";
 
 type BuildMetadataArgs = {
   title: string;
@@ -14,6 +14,10 @@ export function buildMetadata({
   path = "/",
 }: BuildMetadataArgs): Metadata {
   const canonical = new URL(path, siteConfig.siteUrl).toString();
+  const toAbsoluteUrl = (value: string) =>
+    new URL(value, siteConfig.siteUrl).toString();
+  const defaultImage = documentationMedia.find((item) => item.type === "image");
+  const defaultVideo = documentationMedia.find((item) => item.type === "video");
 
   return {
     title,
@@ -30,18 +34,27 @@ export function buildMetadata({
       siteName: siteConfig.name,
       images: [
         {
-          url: "/images/hero-kanopi-modern.jpg",
-          width: 1600,
-          height: 1200,
-          alt: "Bengkel Las Al-Ihsan Bekasi",
+          url: defaultImage?.src ?? "/images/hero-kanopi-modern.jpg",
+          width: 1200,
+          height: 900,
+          alt: defaultImage?.alt ?? "Bengkel Las Al-Ihsan Bekasi",
         },
       ],
+      videos: defaultVideo
+        ? [
+            {
+              url: toAbsoluteUrl(defaultVideo.src),
+              width: 478,
+              height: 850,
+            },
+          ]
+        : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/images/hero-kanopi-modern.jpg"],
+      images: [defaultImage?.src ?? "/images/hero-kanopi-modern.jpg"],
     },
   };
 }

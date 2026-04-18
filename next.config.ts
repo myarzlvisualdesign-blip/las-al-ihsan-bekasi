@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
   images: {
+    // Cloudflare Pages direct upload does not provide Next's /_next/image optimizer.
     unoptimized: true,
+    formats: ["image/avif", "image/webp"],
   },
 };
 

@@ -1,16 +1,21 @@
 import type { MetadataRoute } from "next";
 
-import { siteConfig } from "@/lib/site";
+import { getPublicSiteSnapshot } from "@/lib/cms/public";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const snapshot = await getPublicSiteSnapshot();
+
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
-    host: siteConfig.siteUrl,
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/admin", "/api/admin"],
+      },
+    ],
+    sitemap: `${snapshot.business.siteUrl}/sitemap.xml`,
+    host: new URL(snapshot.business.siteUrl).host,
   };
 }

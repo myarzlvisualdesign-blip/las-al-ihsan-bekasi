@@ -1,6 +1,15 @@
+export type SiteStat = {
+  value: number;
+  label: string;
+  decimals?: number;
+  prefix?: string;
+  suffix?: string;
+};
+
 export const siteConfig = {
   name: "Bengkel Las Al-Ihsan Bekasi",
-  siteUrl: "https://las-al-ihsan-bekasi.pages.dev",
+  siteUrl: "https://bengkellasal-ihsan.com",
+  lastModified: "2026-04-18T16:50:38+07:00",
   primaryPhone: "081389424370",
   secondaryPhone: "085889792571",
   mapsUrl: "https://maps.app.goo.gl/Em9rP5zreHBsWsmA6",
@@ -13,7 +22,7 @@ export const siteConfig = {
     "https://www.google.com/maps?q=Bengkel%20Las%20Al%20Ihsan%20Bekasi%2C%20Jl.%20Bengkong%20Raya%2C%20RT.001%2FRW.006%2C%20Padurenan%2C%20Kec.%20Mustika%20Jaya%2C%20Kota%20Bekasi%2C%20Jawa%20Barat%2017156&output=embed",
   address:
     "Jl. Bengkong Raya, RT.001/RW.006, Padurenan, Kec. Mustika Jaya, Kota Bekasi, Jawa Barat 17156",
-  areaServed: ["Bekasi", "Tambun", "Cikarang", "Babelan"],
+  areaServed: ["Bekasi", "Jakarta"],
   whatsappContacts: [
     {
       label: "WhatsApp Utama",
@@ -61,17 +70,17 @@ export const siteConfig = {
     },
   ],
   heroTags: [
-    "Bengkel Las Bekasi",
+    "Bengkel Las Bekasi & Jakarta",
     "Jasa Las Panggilan",
     "Google 4.9 / 261 Review",
     "Perbaikan & Pengecatan",
   ],
   stats: [
-    { value: "4.9", label: "rating Google" },
-    { value: "261", label: "review Google" },
-    { value: "4", label: "area layanan inti" },
-    { value: "2", label: "nomor WhatsApp aktif" },
-  ],
+    { value: 4.9, decimals: 1, label: "rating Google" },
+    { value: 261, label: "review Google" },
+    { value: 2, label: "area layanan inti" },
+    { value: 2, label: "nomor WhatsApp aktif" },
+  ] satisfies readonly SiteStat[],
   serviceChecklist: [
     "Pagar",
     "Teralis",
@@ -99,31 +108,95 @@ export const reviewSnapshot = {
   reviewCount: "261",
   source: "Google Maps",
   summary:
-    "Snapshot profil Google Maps yang Anda berikan menunjukkan rating 4.9 dengan 261 review. Kami menampilkan angka ini apa adanya dan mengarahkan pengunjung untuk memeriksa ulasan langsung di Google Maps.",
+    "Rating Google 4.9 dengan 261 ulasan mengarah langsung ke profil Maps bisnis, sehingga ulasan, lokasi, dan reputasi usaha bisa dicek sebelum menghubungi tim.",
   badgeAlt:
     "Rating Google Maps Bengkel Las Al-Ihsan Bekasi 4.9 dari 261 review",
+  capturedAt: "18 April 2026",
 } as const;
+
+export type GoogleTestimonial = {
+  name: string;
+  quote: string;
+  avatar?: string;
+  rating: number;
+  source: string;
+  sourceDate: string;
+  headline: string;
+  proofPoints: string[];
+  kind?: "review" | "insight";
+};
+
+export const googleTestimonials: GoogleTestimonial[] = [
+  {
+    name: "Raipo Markhel",
+    quote:
+      "Harga rekomendasi, kualitas bagus, hasil tidak mengecewakan. Good job, Pak.",
+    avatar: "/images/reviews/raipo-markhel.png",
+    rating: 5,
+    source: "Google Maps",
+    sourceDate: "18 Apr 2026",
+    headline: "Nilai utama ada di harga, kualitas, dan hasil akhir.",
+    proofPoints: [
+      "Harga rekomendasi",
+      "Kualitas bagus",
+      "Hasil tidak mengecewakan",
+    ],
+    kind: "review",
+  },
+  {
+    name: "Dhaniar Prasetyorini",
+    quote:
+      "Terima kasih Mas Isan. Saya buat pintu kasa nyamuk untuk area Bekasi Utara.",
+    avatar: "/images/reviews/dhaniar-prasetyorini.png",
+    rating: 5,
+    source: "Google Maps",
+    sourceDate: "18 Apr 2026",
+    headline: "Review spesifik untuk order pintu kasa nyamuk di Bekasi Utara.",
+    proofPoints: [
+      "Pintu kasa nyamuk",
+      "Area Bekasi Utara",
+      "Ucapan terima kasih setelah pemasangan",
+    ],
+    kind: "review",
+  },
+  {
+    name: "Indah Wijaya",
+    quote:
+      "Saya request pasang kaca film jendela dadakan pun tetap disanggupi dengan baik.",
+    avatar: "/images/reviews/indah-wijaya.png",
+    rating: 5,
+    source: "Google Maps",
+    sourceDate: "18 Apr 2026",
+    headline: "Respons cepat tetap terasa meski kebutuhan masuk mendadak.",
+    proofPoints: [
+      "Pasang kaca film jendela",
+      "Request dadakan",
+      "Tetap disanggupi dengan baik",
+    ],
+    kind: "review",
+  },
+] as const;
 
 export const trustSignals = [
   {
     title: "Identitas bisnis mudah diverifikasi",
     description:
-      "Nama usaha, WhatsApp, Google Maps, Instagram, dan TikTok ditampilkan konsisten untuk memudahkan calon pelanggan memeriksa bisnis sebelum pesan.",
+      "Nama usaha, WhatsApp, Google Maps, Instagram, dan TikTok tampil konsisten sehingga identitas bisnis mudah dicek sebelum order.",
   },
   {
-    title: "Portfolio memakai dokumentasi asli",
+    title: "Portfolio menampilkan hasil kerja nyata",
     description:
       "Foto yang tampil berasal dari pekerjaan lapangan Bengkel Las Al-Ihsan Bekasi, bukan stok template atau mockup generik.",
   },
   {
     title: "CTA diarahkan ke jalur closing tercepat",
     description:
-      "Setiap halaman diarahkan ke WhatsApp agar calon pelanggan bisa langsung kirim foto lokasi, ukuran kasar, dan kebutuhan awal.",
+      "Setiap halaman mengarah ke WhatsApp supaya konsultasi bisa langsung lanjut dengan foto lokasi, ukuran kasar, dan kebutuhan awal.",
   },
   {
-    title: "Fokus lokal Bekasi dan sekitarnya",
+    title: "Fokus lokal Bekasi dan Jakarta",
     description:
-      "Konten dibuat untuk SEO lokal Bekasi, Tambun, Cikarang, dan Babelan agar relevan untuk pencarian jasa las terdekat.",
+      "Konten difokuskan untuk Bekasi dan Jakarta agar lebih relevan untuk pencarian jasa las terdekat.",
   },
 ];
 
@@ -131,27 +204,27 @@ export const valueProps = [
   {
     title: "Tampilan lebih serius untuk closing",
     description:
-      "Landing page dibuat seperti company profile ringkas: jelas, meyakinkan, dan siap dipakai saat calon pelanggan membandingkan vendor.",
+      "Informasi utama langsung terbaca seperti company profile ringkas saat pelanggan membandingkan vendor.",
   },
   {
     title: "Scope pekerjaan langsung terbaca",
     description:
-      "Kategori layanan dipisahkan rapi agar pengunjung cepat paham apakah kebutuhan mereka masuk ke pagar, kanopi, stainless, atau perbaikan.",
+      "Kategori layanan membantu pelanggan cepat melihat apakah kebutuhannya masuk ke pagar, kanopi, stainless, atau perbaikan.",
   },
   {
-    title: "Real review snapshot, bukan quote palsu",
+    title: "Cuplikan pelanggan asli dari Google Maps",
     description:
-      "Bagian ulasan menonjolkan data rating Google yang bisa diperiksa langsung, tanpa menampilkan testimonial buatan.",
+      "Bagian ulasan memakai cuplikan pelanggan asli yang tampil publik di Google Maps, lengkap dengan jalur verifikasi langsung ke profil bisnis.",
   },
   {
     title: "Setiap topik punya halaman sendiri",
     description:
-      "Layanan, portfolio, tentang, ulasan, FAQ, dan lokasi dibuat sebagai page terpisah untuk pengalaman mobile dan SEO yang lebih matang.",
+      "Layanan, portfolio, tentang, ulasan, FAQ, dan lokasi dipisah ke halaman sendiri untuk pengalaman mobile yang lebih nyaman.",
   },
   {
     title: "Branding merah-biru lebih tegas",
     description:
-      "Palet visual dipertegas agar merek terasa lebih kokoh, mudah dikenali, dan konsisten dengan karakter logo welder Al-Ihsan.",
+      "Palet visual yang tegas membuat merek terasa lebih kokoh, mudah dikenali, dan konsisten dengan karakter Al-Ihsan.",
   },
 ];
 
@@ -164,15 +237,15 @@ export const advantages = [
   },
   {
     tag: "02",
-    title: "Kategori pekerjaan lebih matang",
+    title: "Kategori layanan mudah dipilih",
     description:
-      "Layanan dipisah menjadi kategori yang jelas agar kebutuhan rumah, ruko, maupun proyek kecil menengah langsung terarah.",
+      "Pagar, kanopi, stainless, tangga, rolling door, dan perbaikan tersusun per kategori sehingga kebutuhan cepat terarah.",
   },
   {
     tag: "03",
-    title: "Ada jalur trust sebelum deal",
+    title: "Identitas usaha mudah diverifikasi",
     description:
-      "Google Maps, rating, alamat, nomor aktif, dan sosial media resmi tampil jelas supaya pelanggan lebih yakin sebelum booking.",
+      "Google Maps, rating, alamat, nomor aktif, dan sosial media resmi tersedia sebelum Anda booking.",
   },
   {
     tag: "04",
@@ -409,30 +482,256 @@ export type PortfolioItem = {
   alt: string;
 };
 
-export const portfolioItems: PortfolioItem[] = [
+export type DocumentationMedia = {
+  type: "image" | "video";
+  title: string;
+  category: string;
+  description: string;
+  src: string;
+  alt: string;
+  poster?: string;
+  durationSeconds?: number;
+};
+
+export const documentationMedia: DocumentationMedia[] = [
   {
-    title: "Kanopi rumah minimalis depan fasad",
+    type: "image",
+    title: "Kanopi carport rumah dengan garis fasad rapi",
     category: "Kanopi",
     description:
-      "Kanopi untuk rumah tinggal yang tetap ringan dilihat dari depan tetapi tetap kokoh untuk perlindungan teras.",
-    image: "/images/kanopi-rumah-minimalis.jpg",
-    alt: "Kanopi rumah minimalis jasa las Bekasi",
+      "Dokumentasi lapangan untuk carport rumah tinggal dengan struktur teduh yang tetap terlihat bersih dari arah depan rumah.",
+    src: "/images/dokumentasi/kanopi-carport-rumah.jpg",
+    alt: "Dokumentasi asli kanopi carport rumah Bengkel Las Al-Ihsan Bekasi",
   },
   {
-    title: "Sliding gate kombinasi abu dan oranye",
-    category: "Pagar",
+    type: "image",
+    title: "Kanopi kaca area void dan samping rumah",
+    category: "Kanopi",
     description:
-      "Pagar sliding dengan permainan warna dan kisi yang tegas untuk rumah modern yang ingin tampil lebih berbeda.",
-    image: "/images/pagar-sliding-oranye-abu.jpg",
-    alt: "Pagar sliding rumah Bekasi",
+      "Contoh pengerjaan kanopi kaca dengan rangka rapi untuk area atas void atau teras samping bangunan.",
+    src: "/images/dokumentasi/kanopi-kaca-void.jpg",
+    alt: "Dokumentasi asli kanopi kaca area void Bengkel Las Al-Ihsan Bekasi",
   },
   {
-    title: "Gerbang laser-cut putih dekoratif",
+    type: "image",
+    title: "Railing tangga proyek saat proses finishing",
+    category: "Railing",
+    description:
+      "Foto asli proses pengerjaan railing tangga di dalam rumah untuk menunjukkan detail kerja lapangan, bukan render.",
+    src: "/images/dokumentasi/railing-tangga-proyek.jpg",
+    alt: "Dokumentasi asli railing tangga proyek Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Pintu kaca rangka besi untuk akses samping",
+    category: "Pintu Besi",
+    description:
+      "Pintu rangka besi kombinasi kaca yang dipasang pada area akses rumah dengan komposisi panel yang rapi.",
+    src: "/images/dokumentasi/pintu-kaca-besi.jpg",
+    alt: "Dokumentasi asli pintu kaca rangka besi Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Pintu besi minimalis untuk area dalam rumah",
+    category: "Pintu Besi",
+    description:
+      "Dokumentasi pemasangan pintu besi minimalis dengan panel tegas untuk akses dalam rumah atau area servis.",
+    src: "/images/dokumentasi/pintu-besi-minimalis-proyek.jpg",
+    alt: "Dokumentasi asli pintu besi minimalis Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Railing rooftop dan tangga akses ke atas",
+    category: "Railing",
+    description:
+      "Pekerjaan railing rooftop dengan tangga akses untuk area atas rumah yang butuh keamanan dan akses perawatan.",
+    src: "/images/dokumentasi/railing-rooftop-ladder.jpg",
+    alt: "Dokumentasi asli railing rooftop Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Pagar putih kombinasi panel motif kayu",
     category: "Pagar",
     description:
-      "Gerbang putih dengan panel potong dekoratif untuk proyek yang ingin keamanan tetap jalan tanpa kehilangan nilai estetika.",
-    image: "/images/pagar-laser-cut-putih.jpg",
-    alt: "Gerbang laser cut putih Bekasi",
+      "Contoh pagar panel rumah dengan komposisi warna putih dan aksen kayu untuk tampilan depan yang lebih bersih.",
+    src: "/images/dokumentasi/pagar-putih-panel-kayu.jpg",
+    alt: "Dokumentasi asli pagar putih panel kayu Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Railing tangga industrial dengan mesh besi",
+    category: "Tangga",
+    description:
+      "Dokumentasi railing tangga model industrial berbasis mesh besi untuk rumah bertingkat dengan karakter tegas.",
+    src: "/images/dokumentasi/railing-tangga-industrial-mesh.jpg",
+    alt: "Dokumentasi asli railing tangga industrial Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Gerbang laser cut putih dengan motif daun dekoratif",
+    category: "Pagar",
+    description:
+      "Pagar putih motif laser cut untuk rumah modern yang ingin tampilan depan tetap bersih, terang, dan terlihat premium.",
+    src: "/images/dokumentasi/gerbang-laser-cut-monstera-putih.jpg",
+    alt: "Gerbang laser cut putih motif daun Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Kanopi carport modern untuk rumah lebar depan",
+    category: "Kanopi",
+    description:
+      "Dokumentasi kanopi carport modern dengan bentang lebar untuk rumah tinggal yang membutuhkan area parkir lebih teduh dan rapi.",
+    src: "/images/dokumentasi/kanopi-carport-modern-bekasi.jpg",
+    alt: "Kanopi carport modern Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Railing balkon putih dengan panel dekoratif",
+    category: "Railing",
+    description:
+      "Contoh railing balkon dan panel samping rumah dengan potongan dekoratif untuk area fasad yang ingin tetap aman tetapi tidak terlihat polos.",
+    src: "/images/dokumentasi/railing-balkon-laser-cut-putih.jpg",
+    alt: "Railing balkon laser cut putih Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Railing tangga rumah dengan handrail nuansa kayu",
+    category: "Tangga",
+    description:
+      "Railing tangga rumah dengan besi hitam dan handrail warna kayu untuk interior yang ingin tetap hangat namun kokoh.",
+    src: "/images/dokumentasi/railing-tangga-rumah-kayu.jpg",
+    alt: "Railing tangga rumah handrail kayu Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Pintu teralis geometris untuk akses utama rumah",
+    category: "Pintu Besi",
+    description:
+      "Pintu teralis geometris untuk area masuk rumah dengan komposisi garis yang rapi agar keamanan tetap terjaga tanpa menutup cahaya.",
+    src: "/images/dokumentasi/pintu-teralis-geometris-rumah.jpg",
+    alt: "Pintu teralis geometris rumah Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Pagar bilah putih saat tahap pemasangan proyek",
+    category: "Pagar",
+    description:
+      "Dokumentasi proses pemasangan pagar bilah putih untuk menunjukkan bahwa tim juga mengerjakan model minimalis yang tegas dan fungsional.",
+    src: "/images/dokumentasi/pagar-bilah-putih-proyek.jpg",
+    alt: "Pagar bilah putih proyek Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Gerbang geometrik hitam untuk fasad rumah modern",
+    category: "Pagar",
+    description:
+      "Gerbang besi hitam berpola geometrik untuk rumah modern yang ingin tampilan depan tetap tegas, rapi, dan terlihat premium.",
+    src: "/images/dokumentasi/gerbang-geometrik-hitam-rumah.jpg",
+    alt: "Gerbang geometrik hitam rumah Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Gerbang laser cut putih dengan panel dekoratif tegas",
+    category: "Pagar",
+    description:
+      "Contoh gerbang putih dengan panel laser cut dekoratif yang cocok untuk fasad rumah agar terlihat bersih tanpa terasa polos.",
+    src: "/images/dokumentasi/gerbang-laser-cut-putih.jpg",
+    alt: "Gerbang laser cut putih dekoratif Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Pagar proyek lapangan saat tahap fabrikasi dan pemasangan",
+    category: "Pagar",
+    description:
+      "Dokumentasi lapangan yang menunjukkan skala kerja tim saat pagar sedang dikerjakan langsung di lokasi proyek.",
+    src: "/images/dokumentasi/pagar-lapangan.jpg",
+    alt: "Pagar proyek lapangan Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Proses kanopi rumah baru saat rangka mulai terpasang",
+    category: "Kanopi",
+    description:
+      "Foto asli tahap pemasangan kanopi rumah baru untuk memperlihatkan progres kerja, skala bentang, dan kondisi lapangan.",
+    src: "/images/dokumentasi/proses-kanopi-rumah-baru.jpg",
+    alt: "Proses pemasangan kanopi rumah baru Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "image",
+    title: "Teralis pintu minimalis untuk akses masuk rumah",
+    category: "Teralis",
+    description:
+      "Teralis pintu minimalis dengan garis sederhana untuk kebutuhan pengaman tambahan yang tetap terasa ringan dilihat.",
+    src: "/images/dokumentasi/teralis-pintu-minimalis.jpg",
+    alt: "Teralis pintu minimalis Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    type: "video",
+    title: "Video detail panel laser cut putih",
+    category: "Video Lapangan",
+    description:
+      "Video pendek yang menampilkan detail panel laser cut dekoratif dari proyek asli Bengkel Las Al-Ihsan Bekasi.",
+    src: "/videos/dokumentasi/panel-laser-cut.mp4",
+    poster: "/images/dokumentasi/panel-laser-cut-poster.jpg",
+    alt: "Video dokumentasi panel laser cut putih Bengkel Las Al-Ihsan Bekasi",
+    durationSeconds: 12,
+  },
+  {
+    type: "video",
+    title: "Video sliding gate saat pengerjaan lapangan",
+    category: "Video Lapangan",
+    description:
+      "Video proses lapangan saat sliding gate sedang dikerjakan untuk menunjukkan skala pekerjaan dan detail finishing.",
+    src: "/videos/dokumentasi/sliding-gate-lapangan.mp4",
+    poster: "/images/dokumentasi/sliding-gate-lapangan-poster.jpg",
+    alt: "Video dokumentasi sliding gate lapangan Bengkel Las Al-Ihsan Bekasi",
+    durationSeconds: 20,
+  },
+  {
+    type: "video",
+    title: "Video ornamen pagar dinding rumah",
+    category: "Video Lapangan",
+    description:
+      "Video proyek ornamen pagar dinding rumah untuk menunjukkan detail pola besi dan finishing lapangan.",
+    src: "/videos/dokumentasi/ornamen-pagar-dinding.mp4",
+    poster: "/images/dokumentasi/ornamen-pagar-dinding-poster.jpg",
+    alt: "Video dokumentasi ornamen pagar dinding Bengkel Las Al-Ihsan Bekasi",
+    durationSeconds: 19,
+  },
+];
+
+export const portfolioItems: PortfolioItem[] = [
+  {
+    title: "Gerbang laser cut putih dekoratif",
+    category: "Pagar",
+    description:
+      "Gerbang putih dengan panel dekoratif untuk rumah yang ingin keamanan tetap berjalan tanpa tampilan depan terasa berat.",
+    image: "/images/dokumentasi/gerbang-laser-cut-putih.jpg",
+    alt: "Gerbang laser cut putih dekoratif Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Teralis pintu dan jendela model minimalis",
+    category: "Teralis",
+    description:
+      "Dokumentasi teralis pintu dan jendela dengan garis geometris sederhana untuk area rumah yang membutuhkan pengaman tambahan.",
+    image: "/images/dokumentasi/teralis-pintu-minimalis.jpg",
+    alt: "Teralis pintu minimalis Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Pagar proyek lapangan saat tahap fabrikasi",
+    category: "Pagar",
+    description:
+      "Foto proses pengerjaan pagar di lokasi untuk memperlihatkan skala kerja tim saat fabrikasi dan pemasangan berlangsung.",
+    image: "/images/dokumentasi/pagar-lapangan.jpg",
+    alt: "Pagar proyek lapangan Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Pagar putih panel rumah dengan aksen kayu",
+    category: "Pagar",
+    description:
+      "Model pagar rumah dengan bidang panel tegas dan aksen kayu untuk fasad yang terlihat bersih namun tetap kokoh.",
+    image: "/images/dokumentasi/pagar-putih-panel-kayu.jpg",
+    alt: "Pagar putih panel kayu Bengkel Las Al-Ihsan Bekasi",
   },
   {
     title: "Tangga stainless kaca interior",
@@ -451,7 +750,15 @@ export const portfolioItems: PortfolioItem[] = [
     alt: "Tangga besi hitam industrial Bekasi",
   },
   {
-    title: "Pintu custom motif macan",
+    title: "Railing tangga industrial dengan mesh",
+    category: "Tangga",
+    description:
+      "Railing besi industrial dengan panel mesh untuk interior rumah bertingkat yang ingin terlihat kokoh dan modern.",
+    image: "/images/dokumentasi/railing-tangga-industrial-mesh.jpg",
+    alt: "Railing tangga industrial mesh Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Pintu custom motif artistik",
     category: "Pintu Besi",
     description:
       "Pintu custom dengan potongan motif artistik untuk kebutuhan proyek yang ingin tampil lebih unik dan berkarakter.",
@@ -465,6 +772,14 @@ export const portfolioItems: PortfolioItem[] = [
       "Pintu panel besi dengan komposisi bidang tegas untuk akses servis, garasi, atau area samping bangunan.",
     image: "/images/pintu-besi-panel-wood.jpg",
     alt: "Pintu panel besi besar Bekasi",
+  },
+  {
+    title: "Pintu besi minimalis proyek rumah",
+    category: "Pintu Besi",
+    description:
+      "Pintu besi minimalis dengan panel sederhana untuk akses dalam rumah, area servis, atau ruang tambahan.",
+    image: "/images/dokumentasi/pintu-besi-minimalis-proyek.jpg",
+    alt: "Pintu besi minimalis proyek Bengkel Las Al-Ihsan Bekasi",
   },
   {
     title: "Gerbang hitam ornamental untuk carport",
@@ -482,28 +797,122 @@ export const portfolioItems: PortfolioItem[] = [
     image: "/images/panel-railing-floral.jpg",
     alt: "Panel railing floral Bengkel Las Bekasi",
   },
+  {
+    title: "Railing rooftop dengan tangga servis",
+    category: "Railing",
+    description:
+      "Railing rooftop dengan tangga servis untuk akses ke area atas bangunan yang butuh pengaman tambahan.",
+    image: "/images/dokumentasi/railing-rooftop-ladder.jpg",
+    alt: "Railing rooftop dan tangga servis Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Gerbang laser cut putih motif daun",
+    category: "Pagar",
+    description:
+      "Gerbang putih laser cut dengan nuansa dekoratif yang cocok untuk rumah modern yang ingin terlihat bersih tetapi tetap punya karakter.",
+    image: "/images/dokumentasi/gerbang-laser-cut-monstera-putih.jpg",
+    alt: "Gerbang laser cut putih motif daun Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Gerbang geometrik hitam untuk fasad modern",
+    category: "Pagar",
+    description:
+      "Gerbang hitam berpola geometrik untuk tampilan depan rumah yang lebih tegas, rapi, dan meyakinkan sejak pandangan pertama.",
+    image: "/images/dokumentasi/gerbang-geometrik-hitam-rumah.jpg",
+    alt: "Gerbang geometrik hitam rumah Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Kanopi carport modern bentang lebar",
+    category: "Kanopi",
+    description:
+      "Kanopi carport rumah tinggal dengan bentang lebar untuk kebutuhan parkir harian yang tetap terlihat bersih dan proporsional.",
+    image: "/images/dokumentasi/kanopi-carport-modern-bekasi.jpg",
+    alt: "Kanopi carport modern bentang lebar Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Proses kanopi rumah baru saat pemasangan",
+    category: "Kanopi",
+    description:
+      "Dokumentasi proses pemasangan kanopi rumah baru untuk menunjukkan tahap kerja lapangan, rangka, dan skala proyek secara nyata.",
+    image: "/images/dokumentasi/proses-kanopi-rumah-baru.jpg",
+    alt: "Proses pemasangan kanopi rumah baru Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Railing balkon laser cut putih",
+    category: "Railing",
+    description:
+      "Railing balkon dengan panel dekoratif putih untuk rumah yang membutuhkan pengaman lantai atas tanpa mengorbankan estetika fasad.",
+    image: "/images/dokumentasi/railing-balkon-laser-cut-putih.jpg",
+    alt: "Railing balkon laser cut putih Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Railing tangga rumah dengan handrail kayu",
+    category: "Tangga",
+    description:
+      "Railing tangga rumah dengan kombinasi besi hitam dan handrail warna kayu untuk hasil yang terasa hangat sekaligus kokoh.",
+    image: "/images/dokumentasi/railing-tangga-rumah-kayu.jpg",
+    alt: "Railing tangga handrail kayu Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Pintu teralis geometris untuk area masuk rumah",
+    category: "Pintu Besi",
+    description:
+      "Pintu teralis geometris yang menjaga sirkulasi cahaya dan udara, sekaligus memberi lapisan pengaman tambahan di area masuk rumah.",
+    image: "/images/dokumentasi/pintu-teralis-geometris-rumah.jpg",
+    alt: "Pintu teralis geometris area masuk rumah Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Pagar bilah putih model minimalis",
+    category: "Pagar",
+    description:
+      "Pagar bilah putih dengan karakter minimalis untuk rumah yang mengutamakan garis bersih, privasi, dan tampilan depan yang lebih rapi.",
+    image: "/images/dokumentasi/pagar-bilah-putih-proyek.jpg",
+    alt: "Pagar bilah putih minimalis Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Pagar rumah kombinasi kisi dan aksen kayu",
+    category: "Pagar",
+    description:
+      "Model pagar rumah dengan kisi atas dan aksen kayu yang terasa modern serta cocok untuk fasad hunian dua lantai.",
+    image: "/images/dokumentasi/pagar-putih-panel-kayu.jpg",
+    alt: "Pagar kombinasi kisi dan panel kayu Bengkel Las Al-Ihsan Bekasi",
+  },
+  {
+    title: "Kanopi carport Bekasi untuk rumah tinggal",
+    category: "Kanopi",
+    description:
+      "Portfolio kanopi carport rumah tinggal yang dirancang untuk kebutuhan teduh harian, tampilan depan rapi, dan struktur yang proporsional.",
+    image: "/images/kanopi-carport-bekasi.jpg",
+    alt: "Kanopi carport rumah tinggal Bekasi",
+  },
+  {
+    title: "Pintu besi pengaman untuk rumah dan servis",
+    category: "Pintu Besi",
+    description:
+      "Pintu besi pengaman untuk area samping rumah, ruang servis, atau akses tambahan yang membutuhkan struktur lebih kokoh.",
+    image: "/images/pintu-besi-bekasi.jpg",
+    alt: "Pintu besi pengaman rumah Bekasi",
+  },
+  {
+    title: "Folding gate untuk toko dan bukaan usaha",
+    category: "Folding Gate",
+    description:
+      "Folding gate yang cocok untuk area usaha, garasi, atau bukaan lebar yang membutuhkan sistem aman dan praktis dipakai harian.",
+    image: "/images/folding-gate-bekasi.jpg",
+    alt: "Folding gate toko dan usaha Bekasi",
+  },
 ];
 
 export const areas = [
   {
     name: "Bekasi",
     description:
-      "Fokus utama layanan untuk kebutuhan bengkel las, pagar besi, kanopi, stainless, rolling door, dan perbaikan.",
+      "Fokus utama layanan untuk kebutuhan bengkel las, pagar besi, kanopi, stainless, rolling door, dan perbaikan di area rumah maupun usaha.",
   },
   {
-    name: "Tambun",
+    name: "Jakarta",
     description:
-      "Melayani survey, pengerjaan custom, dan kebutuhan renovasi rumah atau ruko di area Tambun.",
-  },
-  {
-    name: "Cikarang",
-    description:
-      "Siap untuk pengerjaan proyek rumah tinggal, pintu besi, tangga, kanopi, dan bukaan area usaha.",
-  },
-  {
-    name: "Babelan",
-    description:
-      "Layanan panggilan, perbaikan, dan pengerjaan las untuk area Babelan dan sekitarnya.",
+      "Melayani kebutuhan proyek rumah, ruko, pagar, kanopi, railing, dan pekerjaan custom untuk area Jakarta sesuai titik pengerjaan.",
   },
 ];
 
@@ -512,19 +921,19 @@ export const reviewFacts = [
     tag: "Google Rating",
     title: "4.9 / 5",
     description:
-      "Snapshot rating Google Maps yang Anda lampirkan menunjukkan skor 4.9. Ini kami tampilkan sebagai social proof utama, lalu pengunjung diarahkan untuk memeriksa langsung di Maps.",
+      "Skor rating Google tampil sebagai rujukan utama dan mengarah langsung ke profil Maps bisnis.",
   },
   {
     tag: "Review Count",
     title: "261 review",
     description:
-      "Jumlah review yang terlihat pada snapshot Google Maps kami tampilkan apa adanya agar trust dibangun dari data yang bisa diverifikasi.",
+      "Jumlah ulasan ditampilkan sesuai data Google Maps agar reputasi bisnis bisa dicek dengan lebih yakin.",
   },
   {
     tag: "Verifikasi",
-    title: "Lokasi dan ulasan bisa dicek real-time",
+    title: "Cuplikan review dan profil bisnis bisa dicek langsung",
     description:
-      "Pengunjung dapat membuka Google Maps untuk memeriksa lokasi usaha, membaca ulasan, dan menilai bisnis sebelum menghubungi WhatsApp.",
+      "Pengunjung dapat membuka Google Maps untuk memeriksa lokasi usaha, membaca ulasan lengkap, dan menilai bisnis sebelum menghubungi WhatsApp.",
   },
 ];
 
@@ -537,7 +946,7 @@ export const faqs = [
   {
     question: "Apakah bisa survey ke lokasi?",
     answer:
-      "Bisa. Untuk pekerjaan tertentu kami dapat melakukan survey ke lokasi di Bekasi, Tambun, Cikarang, Babelan, dan area sekitar.",
+      "Bisa. Untuk pekerjaan tertentu kami dapat melakukan survey ke lokasi di Bekasi, Jakarta, dan area sekitar sesuai kebutuhan proyek.",
   },
   {
     question: "Apakah bisa custom desain sesuai rumah saya?",

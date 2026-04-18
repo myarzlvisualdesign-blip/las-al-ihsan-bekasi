@@ -1,41 +1,54 @@
-import type { Metadata } from "next";
-
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { JsonLd } from "@/components/schema";
+import { PublicPageShell } from "@/components/public-page-shell";
 import {
   ClosingCtaSection,
-  MapsSection,
+  ContactSection,
   PageIntro,
-  ReviewsSection,
-} from "@/components/site-sections";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { buildMetadata } from "@/lib/metadata";
+  TestimonialsSection,
+} from "@/components/public-sections";
+import { buildBreadcrumbSchema, buildMetadataForRoute } from "@/lib/seo";
+import { getPagePayload, getSection } from "@/lib/cms/public";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Lokasi Bengkel Las Bekasi | Google Maps Bengkel Las Al-Ihsan Bekasi",
-  description:
-    "Cek lokasi Bengkel Las Al-Ihsan Bekasi di Google Maps, buka ulasan, dan hubungi WhatsApp langsung untuk konsultasi pagar, kanopi, stainless, dan jasa las panggilan.",
-  path: "/lokasi",
-});
+export const dynamic = "force-dynamic";
 
-export default function LocationPage() {
+export async function generateMetadata() {
+  return buildMetadataForRoute("/lokasi");
+}
+
+export default async function LocationPage() {
+  const snapshot = await getPagePayload("/lokasi");
+  const intro = getSection(snapshot.page, "intro");
+  const homeContact = getSection(
+    snapshot.pages.find((item) => item.route === "/") ?? snapshot.page,
+    "contact",
+  );
+  const homeTestimonials = getSection(
+    snapshot.pages.find((item) => item.route === "/") ?? snapshot.page,
+    "testimonials",
+  );
+  const cta = getSection(snapshot.globalPage, "cta");
+
   return (
-    <>
-      <SiteHeader currentPath="/lokasi" />
+    <PublicPageShell snapshot={snapshot} currentPath="/lokasi">
+      <JsonLd
+        data={buildBreadcrumbSchema(snapshot.business.siteUrl, [
+          { name: "Beranda", path: "/" },
+          { name: "Lokasi", path: "/lokasi" },
+        ])}
+      />
       <main className="overflow-x-clip">
-        <PageIntro
-          eyebrow="Lokasi"
-          title="Lokasi bengkel, ulasan Google, dan jalur kontak dibuat jelas untuk memudahkan verifikasi sebelum pesan."
-          description="Halaman ini menggabungkan peta lokasi, kontak aktif, sosial resmi, dan snapshot ulasan Google agar calon pelanggan bisa menilai bisnis dengan cepat dari perangkat mobile."
-          secondaryHref="/ulasan"
-          secondaryLabel="Lihat Ulasan"
-        />
-        <MapsSection />
-        <ReviewsSection />
-        <ClosingCtaSection />
+        {intro ? <PageIntro section={intro} /> : null}
+        {homeContact ? (
+          <ContactSection section={homeContact} business={snapshot.business} />
+        ) : null}
+        {homeTestimonials ? (
+          <TestimonialsSection
+            section={homeTestimonials}
+            testimonials={snapshot.testimonials}
+          />
+        ) : null}
+        {cta ? <ClosingCtaSection section={cta} /> : null}
       </main>
-      <SiteFooter />
-      <FloatingWhatsApp />
-    </>
+    </PublicPageShell>
   );
 }

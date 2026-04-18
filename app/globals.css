@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b2d66;
-  --foreground: #f8fbff;
-  --color-ink: #0f172a;
-  --color-brand-amber: #e11d3f;
-  --color-brand-amber-deep: #c21433;
-  --color-brand-steel: #dbe5fb;
+  --background: #f3f0ea;
+  --foreground: #16202d;
+  --color-ink: #16202d;
+  --color-brand-amber: #b33b2e;
+  --color-brand-amber-deep: #912d23;
+  --color-brand-steel: #d7dde5;
 }
 
 @theme inline {
@@ -26,9 +26,10 @@ html {
 
 body {
   font-family: var(--font-alihsan-body), sans-serif;
+  color: var(--foreground);
   background:
-    radial-gradient(circle at top right, rgba(225, 29, 63, 0.14), transparent 18%),
-    linear-gradient(180deg, #103474 0%, #0b2d66 48%, #082452 100%);
+    radial-gradient(circle at top left, rgba(179, 59, 46, 0.08), transparent 24%),
+    linear-gradient(180deg, #f7f4ef 0%, #f3f0ea 48%, #ece8e0 100%);
 }
 
 body::before {
@@ -36,16 +37,14 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(rgba(96, 144, 229, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(96, 144, 229, 0.1) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.22), transparent 86%);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.72), transparent 52%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.36), transparent 40%);
   z-index: -1;
 }
 
 ::selection {
-  background: rgba(225, 29, 63, 0.88);
+  background: rgba(179, 59, 46, 0.9);
   color: #ffffff;
 }
 
@@ -59,4 +58,156 @@ summary::-webkit-details-marker {
 
 .section-shell {
   position: relative;
+}
+
+.page-top-offset {
+  padding-top: calc(env(safe-area-inset-top) + 7.75rem);
+}
+
+@keyframes section-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes progress-fill {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes gentle-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (min-width: 40rem) {
+  .page-top-offset {
+    padding-top: calc(env(safe-area-inset-top) + 8.5rem);
+  }
+}
+
+@media (min-width: 64rem) {
+  .page-top-offset {
+    padding-top: calc(env(safe-area-inset-top) + 9rem);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main > .section-shell {
+    opacity: 0;
+    animation: section-enter 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  main > .section-shell:nth-of-type(2) {
+    animation-delay: 0.05s;
+  }
+
+  main > .section-shell:nth-of-type(3) {
+    animation-delay: 0.1s;
+  }
+
+  main > .section-shell:nth-of-type(4) {
+    animation-delay: 0.15s;
+  }
+
+  main > .section-shell:nth-of-type(5) {
+    animation-delay: 0.2s;
+  }
+
+  main > .section-shell:nth-of-type(6) {
+    animation-delay: 0.24s;
+  }
+
+  main > .section-shell:nth-of-type(7) {
+    animation-delay: 0.28s;
+  }
+
+  main > .section-shell:nth-of-type(8) {
+    animation-delay: 0.32s;
+  }
+
+  main > .section-shell:nth-of-type(9) {
+    animation-delay: 0.36s;
+  }
+
+  .site-panel,
+  .site-card,
+  .site-chip {
+    transition:
+      transform 0.32s ease,
+      box-shadow 0.32s ease,
+      border-color 0.32s ease,
+      background-color 0.32s ease;
+  }
+
+  .site-panel:hover,
+  .site-card:hover,
+  .site-chip:hover {
+    transform: translateY(-4px);
+  }
+
+  .site-chip-static:hover {
+    transform: translateY(0);
+  }
+
+  .site-button {
+    transition:
+      transform 0.28s ease,
+      box-shadow 0.28s ease,
+      background-color 0.28s ease,
+      border-color 0.28s ease,
+      color 0.28s ease;
+  }
+
+  .site-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .site-button:active {
+    transform: translateY(0);
+  }
+
+  .site-fade-in {
+    animation: soft-fade 0.46s ease both;
+  }
+
+  .site-progress {
+    transform-origin: left center;
+    animation: progress-fill var(--progress-duration, 4.8s) linear forwards;
+  }
+
+  .site-bob {
+    animation: gentle-bob 4.8s ease-in-out infinite;
+  }
 }

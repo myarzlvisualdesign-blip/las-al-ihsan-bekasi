@@ -15,15 +15,13 @@ type BrandLockupProps = {
 
 export function BrandMark({ className = "" }: BrandMarkProps) {
   return (
-    <div
-      className={`inline-flex items-center justify-center overflow-hidden rounded-2xl border border-[#d6e0f5] bg-white shadow-[0_14px_32px_rgba(8,35,84,0.14)] ${className}`}
-    >
+    <div className={`inline-flex items-center justify-center ${className}`}>
       <Image
         src="/icon.png"
         alt="Icon Bengkel Las Al-Ihsan Bekasi"
         width={72}
         height={72}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
       />
     </div>
   );
@@ -31,15 +29,16 @@ export function BrandMark({ className = "" }: BrandMarkProps) {
 
 export function BrandLockup({ className = "" }: BrandLockupProps) {
   return (
-    <div className={`inline-flex items-center gap-3 ${className}`}>
-      <BrandMark className="h-12 w-12 shrink-0 rounded-[1rem]" />
-      <div className="min-w-0">
-        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#e11d3f]">
-          Bengkel Las
-        </p>
-        <p className="truncate font-display text-[1.3rem] leading-none text-[#17336c] sm:text-[1.55rem]">
-          Al-Ihsan Bekasi
-        </p>
+    <div className={`inline-flex items-center ${className}`}>
+      <div className="relative h-[2.45rem] w-[9.75rem] sm:h-[2.65rem] sm:w-[10.75rem] lg:h-[2.8rem] lg:w-[11.5rem]">
+        <Image
+          src="/images/logo-al-ihsan.png"
+          alt="Logo Bengkel Las Al-Ihsan Bekasi"
+          fill
+          sizes="(max-width: 640px) 156px, (max-width: 1024px) 172px, 184px"
+          className="object-contain object-left"
+          priority
+        />
       </div>
     </div>
   );
@@ -50,30 +49,21 @@ export function BrandLogo({
   className = "",
 }: BrandLogoProps) {
   return (
-    <div
-      className={`inline-flex max-w-full flex-col gap-3 rounded-[1.6rem] border border-[#dce5f5] bg-white p-3 shadow-[0_22px_60px_rgba(23,51,108,0.16)] sm:p-4 ${className}`}
-    >
+    <div className={`inline-flex max-w-full flex-col gap-3 ${className}`}>
       <Image
         src="/images/logo-al-ihsan.png"
         alt="Logo Bengkel Las Al-Ihsan Bekasi"
         width={compact ? 240 : 760}
         height={compact ? 65 : 205}
         sizes={compact ? "240px" : "(max-width: 768px) 90vw, 760px"}
-        className="h-auto w-full"
+        className="h-auto w-full object-contain"
         priority={!compact}
       />
       {!compact && (
-        <div className="flex flex-wrap gap-2">
-          <span className="rounded-full bg-[#eef3fb] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#17336c]">
-            Terima Perbaikan
-          </span>
-          <span className="rounded-full bg-[#eef3fb] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#17336c]">
-            Pengecatan
-          </span>
-          <span className="rounded-full bg-[#e11d3f] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white">
-            Layanan Panggilan
-          </span>
-        </div>
+        <p className="text-sm leading-7 text-[#526172]">
+          Pagar, kanopi, stainless, pintu besi, rolling door, perbaikan, dan
+          layanan panggilan untuk area Bekasi dan sekitarnya.
+        </p>
       )}
     </div>
   );

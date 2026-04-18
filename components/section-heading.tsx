@@ -12,17 +12,19 @@ export function SectionHeading({
   align = "left",
 }: SectionHeadingProps) {
   const wrapper =
-    align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl";
+    align === "center"
+      ? "site-fade-in mx-auto max-w-3xl text-center"
+      : "site-fade-in max-w-3xl";
 
   return (
     <div className={wrapper}>
-      <p className="text-sm uppercase tracking-[0.3em] text-brand-amber">
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-amber">
         {eyebrow}
       </p>
-      <h2 className="mt-4 font-display text-[2.6rem] leading-[0.95] text-white sm:text-[3.4rem]">
+      <h2 className="mt-4 font-display text-[2.35rem] leading-[1] text-[#182433] sm:text-[3.15rem]">
         {title}
       </h2>
-      <p className="mt-5 text-sm leading-8 text-zinc-300 sm:text-base">
+      <p className="mt-4 text-sm leading-7 text-[#516072] sm:text-base">
         {description}
       </p>
     </div>

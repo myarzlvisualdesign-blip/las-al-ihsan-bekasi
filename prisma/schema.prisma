@@ -1,0 +1,296 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum MediaKind {
+  IMAGE
+  VIDEO
+  FILE
+}
+
+enum PageKind {
+  HOME
+  SERVICES
+  PORTFOLIO
+  ABOUT
+  REVIEWS
+  FAQ
+  CONTACT
+  GLOBAL
+}
+
+enum SectionBlockType {
+  TEXT
+  TEXTAREA
+  URL
+  IMAGE
+  BOOLEAN
+  JSON
+}
+
+enum SocialPlatform {
+  WHATSAPP
+  INSTAGRAM
+  TIKTOK
+  MAPS
+  OTHER
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         String   @default("admin")
+  lastLoginAt  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model MediaAsset {
+  id                 String           @id @default(cuid())
+  kind               MediaKind        @default(IMAGE)
+  title              String
+  altText            String
+  fileName           String
+  storageKey         String
+  url                String           @unique
+  mimeType           String
+  extension          String?
+  sizeBytes          Int
+  width              Int?
+  height             Int?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  defaultForBusiness BusinessProfile[] @relation("BusinessDefaultOgImage")
+  serviceItems       ServiceItem[]
+  portfolioItems     PortfolioItem[]
+  testimonialItems   Testimonial[]
+  pageOgImages       Page[]           @relation("PageOgImage")
+}
+
+model BusinessProfile {
+  id                              String         @id @default("default")
+  businessName                    String
+  shortName                       String
+  tagline                         String?
+  siteUrl                         String
+  supportEmail                    String?
+  primaryPhone                    String
+  secondaryPhone                  String?
+  whatsappPrimary                 String
+  whatsappSecondary               String?
+  whatsappMessage                 String
+  whatsappSecondaryMessage        String?
+  addressLine1                    String
+  addressLine2                    String?
+  district                        String?
+  city                            String
+  region                          String
+  postalCode                      String
+  countryCode                     String         @default("ID")
+  mapsUrl                         String
+  mapsEmbedUrl                    String
+  reviewUrl                       String?
+  instagramUrl                    String?
+  tiktokUrl                       String?
+  latitude                        Decimal?       @db.Decimal(10, 7)
+  longitude                       Decimal?       @db.Decimal(10, 7)
+  areasServed                     String[]
+  openingHoursNote                String?
+  defaultMetaTitle                String
+  defaultMetaDescription          String
+  defaultKeywords                 String[]
+  defaultOgImageId                String?
+  logoUrl                         String
+  faviconUrl                      String
+  googleAnalyticsId               String?
+  googleTagManagerId              String?
+  googleSearchConsoleVerification String?
+  createdAt                       DateTime       @default(now())
+  updatedAt                       DateTime       @updatedAt
+  defaultOgImage                  MediaAsset?    @relation("BusinessDefaultOgImage", fields: [defaultOgImageId], references: [id], onDelete: SetNull)
+  operatingHours                  OperatingHour[]
+  socialLinks                     SocialLink[]
+}
+
+model OperatingHour {
+  id         String          @id @default(cuid())
+  profileId  String
+  dayLabel   String
+  opensAt    String?
+  closesAt   String?
+  isClosed   Boolean         @default(false)
+  sortOrder  Int             @default(0)
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  profile    BusinessProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId, sortOrder])
+}
+
+model SocialLink {
+  id         String          @id @default(cuid())
+  profileId  String
+  platform   SocialPlatform
+  label      String
+  url        String
+  isVisible  Boolean         @default(true)
+  sortOrder  Int             @default(0)
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  profile    BusinessProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId, sortOrder])
+}
+
+model NavigationItem {
+  id         String   @id @default(cuid())
+  label      String
+  href       String
+  isVisible  Boolean  @default(true)
+  isExternal Boolean  @default(false)
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Page {
+  id             String        @id @default(cuid())
+  kind           PageKind
+  name           String
+  slug           String        @unique
+  route          String        @unique
+  seoTitle       String?
+  seoDescription String?
+  seoKeywords    String[]
+  canonicalPath  String?
+  ogImageId      String?
+  robotsIndex    Boolean       @default(true)
+  robotsFollow   Boolean       @default(true)
+  status         ContentStatus @default(PUBLISHED)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  ogImage        MediaAsset?   @relation("PageOgImage", fields: [ogImageId], references: [id], onDelete: SetNull)
+  sections       PageSection[]
+}
+
+model PageSection {
+  id          String         @id @default(cuid())
+  pageId      String
+  key         String
+  name        String
+  isVisible   Boolean        @default(true)
+  sortOrder   Int            @default(0)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  page        Page           @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  blocks      SectionBlock[]
+
+  @@unique([pageId, key])
+  @@index([pageId, sortOrder])
+}
+
+model SectionBlock {
+  id         String           @id @default(cuid())
+  sectionId  String
+  key        String
+  label      String
+  type       SectionBlockType @default(TEXT)
+  value      Json
+  sortOrder  Int              @default(0)
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+  section    PageSection      @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@unique([sectionId, key])
+  @@index([sectionId, sortOrder])
+}
+
+model ServiceItem {
+  id             String        @id @default(cuid())
+  title          String
+  slug           String        @unique
+  badge          String?
+  summary        String
+  description    String
+  bullets        Json
+  imageId        String?
+  altText        String?
+  sortOrder      Int           @default(0)
+  isFeatured     Boolean       @default(false)
+  status         ContentStatus @default(PUBLISHED)
+  seoTitle       String?
+  seoDescription String?
+  seoKeywords    String[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  image          MediaAsset?   @relation(fields: [imageId], references: [id], onDelete: SetNull)
+
+  @@index([status, sortOrder])
+}
+
+model PortfolioItem {
+  id               String        @id @default(cuid())
+  title            String
+  slug             String        @unique
+  category         String
+  location         String?
+  shortDescription String
+  description      String
+  coverImageId     String?
+  altText          String?
+  sortOrder        Int           @default(0)
+  isFeatured       Boolean       @default(false)
+  status           ContentStatus @default(PUBLISHED)
+  seoTitle         String?
+  seoDescription   String?
+  seoKeywords      String[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  coverImage       MediaAsset?   @relation(fields: [coverImageId], references: [id], onDelete: SetNull)
+
+  @@index([status, sortOrder])
+}
+
+model Testimonial {
+  id            String        @id @default(cuid())
+  customerName  String
+  customerRole  String?
+  quote         String
+  rating        Int           @default(5)
+  sourceLabel   String
+  sourceUrl     String?
+  avatarImageId String?
+  sortOrder     Int           @default(0)
+  isFeatured    Boolean       @default(false)
+  status        ContentStatus @default(PUBLISHED)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  avatarImage   MediaAsset?   @relation(fields: [avatarImageId], references: [id], onDelete: SetNull)
+
+  @@index([status, sortOrder])
+}
+
+model FaqItem {
+  id         String        @id @default(cuid())
+  question   String
+  answer     String
+  sortOrder  Int           @default(0)
+  status     ContentStatus @default(PUBLISHED)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  @@index([status, sortOrder])
+}

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Manrope } from "next/font/google";
+import Script from "next/script";
+import { Toaster } from "sonner";
 
 import "./globals.css";
 
-import { LocalBusinessSchema } from "@/components/schema";
-import { buildMetadata } from "@/lib/metadata";
-import { siteConfig } from "@/lib/site";
+import { getPublicSiteSnapshot } from "@/lib/cms/public";
 
 const manrope = Manrope({
   variable: "--font-alihsan-body",
@@ -19,24 +19,11 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
-  ...buildMetadata({
-    title: "Bengkel Las Bekasi | Al-Ihsan – Jasa Pagar, Kanopi & Stainless",
-    description:
-      "Bengkel Las Al-Ihsan Bekasi melayani pagar, kanopi, teralis, rolling door, stainless, dan jasa las panggilan. Cek lokasi & ulasan kami di Google Maps.",
-  }),
-  keywords: [
-    "bengkel las bekasi",
-    "jasa las bekasi",
-    "pagar besi bekasi",
-    "kanopi bekasi",
-    "stainless bekasi",
-    "bengkel las terdekat bekasi",
-    "teralis bekasi",
-    "pintu besi bekasi",
-    "rolling door bekasi",
-    "folding gate bekasi",
-  ],
+  title: {
+    default: "Bengkel Las Al-Ihsan Bekasi",
+    template: "%s | Bengkel Las Al-Ihsan Bekasi",
+  },
+  manifest: "/manifest.webmanifest",
   icons: {
     icon: [
       {
@@ -51,25 +38,38 @@ export const metadata: Metadata = {
       },
     ],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const snapshot = await getPublicSiteSnapshot();
+  const analyticsId = snapshot.business.googleAnalyticsId;
+
   return (
     <html
       lang="id"
       className={`${manrope.variable} ${barlowCondensed.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-background text-foreground">
-        <LocalBusinessSchema />
+        {analyticsId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${analyticsId}');`}
+            </Script>
+          </>
+        ) : null}
         {children}
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );

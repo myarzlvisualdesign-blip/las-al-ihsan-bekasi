@@ -1,35 +1,48 @@
-import type { Metadata } from "next";
+import { JsonLd } from "@/components/schema";
+import { PublicPageShell } from "@/components/public-page-shell";
+import {
+  ClosingCtaSection,
+  PageIntro,
+  ServicesSection,
+} from "@/components/public-sections";
+import { buildBreadcrumbSchema, buildLocalBusinessSchema, buildMetadataForRoute } from "@/lib/seo";
+import { getPagePayload, getSection } from "@/lib/cms/public";
 
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
-import { PageIntro, ServicesSection, ClosingCtaSection } from "@/components/site-sections";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { buildMetadata } from "@/lib/metadata";
+export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Layanan Bengkel Las Bekasi | Pagar, Kanopi, Stainless & Rolling Door",
-  description:
-    "Lihat kategori layanan Bengkel Las Al-Ihsan Bekasi untuk pagar besi, kanopi, stainless, tangga putar, folding gate, pintu besi, rolling door, perbaikan, dan pengecatan.",
-  path: "/layanan",
-});
+export async function generateMetadata() {
+  return buildMetadataForRoute("/layanan");
+}
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const snapshot = await getPagePayload("/layanan");
+  const intro = getSection(snapshot.page, "intro");
+  const cta = getSection(snapshot.globalPage, "cta");
+  const servicesSection = getSection(
+    snapshot.pages.find((item) => item.route === "/") ?? snapshot.page,
+    "services",
+  );
+
   return (
-    <>
-      <SiteHeader currentPath="/layanan" />
+    <PublicPageShell snapshot={snapshot} currentPath="/layanan">
+      <JsonLd data={buildLocalBusinessSchema(snapshot)} />
+      <JsonLd
+        data={buildBreadcrumbSchema(snapshot.business.siteUrl, [
+          { name: "Beranda", path: "/" },
+          { name: "Layanan", path: "/layanan" },
+        ])}
+      />
       <main className="overflow-x-clip">
-        <PageIntro
-          eyebrow="Halaman Layanan"
-          title="Kategori jasa las Bekasi yang lengkap untuk rumah, ruko, dan kebutuhan custom."
-          description="Halaman ini merangkum layanan utama Bengkel Las Al-Ihsan Bekasi secara lebih detail agar calon pelanggan cepat tahu apakah kebutuhan mereka masuk ke pagar, kanopi, stainless, tangga, rolling door, atau perbaikan."
-          secondaryHref="/portfolio"
-          secondaryLabel="Lihat Portfolio"
-        />
-        <ServicesSection />
-        <ClosingCtaSection />
+        {intro ? <PageIntro section={intro} /> : null}
+        {servicesSection ? (
+          <ServicesSection
+            section={servicesSection}
+            services={snapshot.services}
+            limit={snapshot.services.length}
+          />
+        ) : null}
+        {cta ? <ClosingCtaSection section={cta} /> : null}
       </main>
-      <SiteFooter />
-      <FloatingWhatsApp />
-    </>
+    </PublicPageShell>
   );
 }

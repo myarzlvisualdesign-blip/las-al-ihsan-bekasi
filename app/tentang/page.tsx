@@ -1,41 +1,49 @@
-import type { Metadata } from "next";
-
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { JsonLd } from "@/components/schema";
+import { PublicPageShell } from "@/components/public-page-shell";
 import {
   AboutSection,
-  AreasSection,
   ClosingCtaSection,
+  ContactSection,
   PageIntro,
-} from "@/components/site-sections";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { buildMetadata } from "@/lib/metadata";
+} from "@/components/public-sections";
+import { buildBreadcrumbSchema, buildMetadataForRoute } from "@/lib/seo";
+import { getPagePayload, getSection } from "@/lib/cms/public";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Tentang Bengkel Las Al-Ihsan Bekasi | Jasa Las Bekasi yang Siap Survey",
-  description:
-    "Kenali Bengkel Las Al-Ihsan Bekasi, area layanan, fokus pengerjaan, dan cara kerja untuk kebutuhan pagar besi, kanopi, stainless, serta jasa las panggilan.",
-  path: "/tentang",
-});
+export const dynamic = "force-dynamic";
 
-export default function AboutPage() {
+export async function generateMetadata() {
+  return buildMetadataForRoute("/tentang");
+}
+
+export default async function AboutPage() {
+  const snapshot = await getPagePayload("/tentang");
+  const intro = getSection(snapshot.page, "intro");
+  const homeAbout = getSection(
+    snapshot.pages.find((item) => item.route === "/") ?? snapshot.page,
+    "about",
+  );
+  const homeContact = getSection(
+    snapshot.pages.find((item) => item.route === "/") ?? snapshot.page,
+    "contact",
+  );
+  const cta = getSection(snapshot.globalPage, "cta");
+
   return (
-    <>
-      <SiteHeader currentPath="/tentang" />
+    <PublicPageShell snapshot={snapshot} currentPath="/tentang">
+      <JsonLd
+        data={buildBreadcrumbSchema(snapshot.business.siteUrl, [
+          { name: "Beranda", path: "/" },
+          { name: "Tentang", path: "/tentang" },
+        ])}
+      />
       <main className="overflow-x-clip">
-        <PageIntro
-          eyebrow="Tentang Al-Ihsan"
-          title="Profil bengkel las Bekasi yang dibangun untuk terlihat profesional dan mudah dipercaya."
-          description="Halaman ini menjelaskan siapa Bengkel Las Al-Ihsan Bekasi, jenis pekerjaan yang dikerjakan, area layanan utama, dan alasan mengapa calon pelanggan bisa lebih yakin sebelum menghubungi WhatsApp."
-          secondaryHref="/ulasan"
-          secondaryLabel="Lihat Ulasan Google"
-        />
-        <AboutSection />
-        <AreasSection />
-        <ClosingCtaSection />
+        {intro ? <PageIntro section={intro} /> : null}
+        {homeAbout ? <AboutSection section={homeAbout} /> : null}
+        {homeContact ? (
+          <ContactSection section={homeContact} business={snapshot.business} />
+        ) : null}
+        {cta ? <ClosingCtaSection section={cta} /> : null}
       </main>
-      <SiteFooter />
-      <FloatingWhatsApp />
-    </>
+    </PublicPageShell>
   );
 }

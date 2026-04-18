@@ -1,39 +1,46 @@
-import type { Metadata } from "next";
-
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { JsonLd } from "@/components/schema";
+import { PublicPageShell } from "@/components/public-page-shell";
 import {
   ClosingCtaSection,
   PageIntro,
   PortfolioSection,
-} from "@/components/site-sections";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { buildMetadata } from "@/lib/metadata";
+} from "@/components/public-sections";
+import { buildBreadcrumbSchema, buildMetadataForRoute } from "@/lib/seo";
+import { getPagePayload, getSection } from "@/lib/cms/public";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Portfolio Bengkel Las Bekasi | Hasil Pagar, Kanopi, Stainless & Tangga",
-  description:
-    "Lihat portfolio asli Bengkel Las Al-Ihsan Bekasi untuk pekerjaan pagar besi, kanopi, stainless steel, tangga, folding gate, dan pintu besi.",
-  path: "/portfolio",
-});
+export const dynamic = "force-dynamic";
 
-export default function PortfolioPage() {
+export async function generateMetadata() {
+  return buildMetadataForRoute("/portfolio");
+}
+
+export default async function PortfolioPage() {
+  const snapshot = await getPagePayload("/portfolio");
+  const intro = getSection(snapshot.page, "intro");
+  const cta = getSection(snapshot.globalPage, "cta");
+  const portfolioSection = getSection(
+    snapshot.pages.find((item) => item.route === "/") ?? snapshot.page,
+    "portfolio",
+  );
+
   return (
-    <>
-      <SiteHeader currentPath="/portfolio" />
+    <PublicPageShell snapshot={snapshot} currentPath="/portfolio">
+      <JsonLd
+        data={buildBreadcrumbSchema(snapshot.business.siteUrl, [
+          { name: "Beranda", path: "/" },
+          { name: "Portfolio", path: "/portfolio" },
+        ])}
+      />
       <main className="overflow-x-clip">
-        <PageIntro
-          eyebrow="Halaman Portfolio"
-          title="Dokumentasi hasil kerja asli untuk membantu calon pelanggan menilai kualitas pengerjaan."
-          description="Kami menampilkan foto proyek nyata dari Bengkel Las Al-Ihsan Bekasi agar pengunjung bisa melihat style hasil, kualitas finishing, dan ragam pekerjaan yang benar-benar pernah dikerjakan."
-          secondaryHref="/lokasi"
-          secondaryLabel="Lihat Lokasi Bengkel"
-        />
-        <PortfolioSection />
-        <ClosingCtaSection />
+        {intro ? <PageIntro section={intro} /> : null}
+        {portfolioSection ? (
+          <PortfolioSection
+            section={portfolioSection}
+            portfolio={snapshot.portfolio}
+          />
+        ) : null}
+        {cta ? <ClosingCtaSection section={cta} /> : null}
       </main>
-      <SiteFooter />
-      <FloatingWhatsApp />
-    </>
+    </PublicPageShell>
   );
 }

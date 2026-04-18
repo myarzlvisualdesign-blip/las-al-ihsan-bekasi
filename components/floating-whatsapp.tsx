@@ -1,17 +1,24 @@
 import { WhatsAppIcon } from "@/components/icons";
-import { siteConfig } from "@/lib/site";
 
-export function FloatingWhatsApp() {
+export function FloatingWhatsApp({
+  href,
+  label,
+  ariaLabel,
+}: {
+  href: string;
+  label: string;
+  ariaLabel: string;
+}) {
   return (
     <a
-      href={siteConfig.whatsappPrimaryUrl}
-      className="fixed right-4 bottom-4 z-50 inline-flex items-center gap-3 rounded-full border border-emerald-400/20 bg-emerald-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(16,185,129,0.35)] transition hover:bg-emerald-600"
-      aria-label="Chat WhatsApp Bengkel Las Al-Ihsan Bekasi"
+      href={href}
+      className="site-button site-bob fixed right-4 bottom-4 z-50 inline-flex items-center gap-3 rounded-xl border border-[#1f7a57] bg-[#1d8f63] px-4 py-3 text-sm font-semibold text-white shadow-[0_16px_30px_rgba(29,143,99,0.24)] transition hover:bg-[#187a55]"
+      aria-label={ariaLabel}
     >
       <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
         <WhatsAppIcon className="h-5 w-5" />
       </span>
-      <span className="hidden sm:inline">Chat WhatsApp</span>
+      <span className="hidden sm:inline">{label}</span>
     </a>
   );
 }
